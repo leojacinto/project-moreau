@@ -1,0 +1,2385 @@
+approaches:
+  rest-custom-ui:
+    runs:
+    - run: 1
+      timestamp: '2026-04-03T12:13:15.691281'
+      scope: x_snc_apr_trv
+      score: 0/32
+      passed: 0
+      total: 32
+      components:
+        tables_and_columns:
+          label: Tables & columns
+          status: fail
+          found: 0
+          expected: 4
+        acls:
+          label: Access control lists (ACLs)
+          status: fail
+          found: 0
+          expected: 11
+        roles:
+          label: Roles
+          status: fail
+          found: 0
+          expected: 4
+        business_rules:
+          label: Business rules
+          status: fail
+          found: 0
+          expected: 7
+        client_scripts:
+          label: Client scripts
+          status: fail
+          found: 0
+          expected: 3
+        ui_policies:
+          label: UI policies
+          status: fail
+          found: 0
+          expected: 3
+        flows:
+          label: Flows (Workflow Automation)
+          status: fail
+          found: 0
+          expected: 3
+        email_notifications:
+          label: Email notifications
+          status: fail
+          found: 0
+          expected: 5
+        service_catalog_items:
+          label: Service catalog items
+          status: fail
+          found: 0
+          expected: 1
+        variables_and_variable_sets:
+          label: Variables & variable sets
+          status: fail
+          found: 0
+          expected: 2
+        catalog_client_scripts:
+          label: Catalog client scripts
+          status: fail
+          found: 0
+          expected: 3
+        catalog_ui_policies:
+          label: Catalog UI policies
+          status: fail
+          found: 0
+          expected: 2
+        script_includes:
+          label: Script includes
+          status: fail
+          found: 0
+          expected: 3
+        scripted_rest_apis:
+          label: Scripted REST APIs
+          status: fail
+          found: 0
+          expected: 1
+        ui_actions:
+          label: UI actions
+          status: fail
+          found: 0
+          expected: 5
+        ui_pages:
+          label: UI pages (React)
+          status: fail
+          found: 0
+          expected: 2
+        ui_formatters:
+          label: UI formatters (built-in)
+          status: fail
+          found: 0
+          expected: 2
+        workspaces:
+          label: Workspaces
+          status: fail
+          found: 0
+          expected: 1
+        app_menus_and_modules:
+          label: Application menus & modules
+          status: fail
+          found: 0
+          expected: 1
+        lists:
+          label: Lists
+          status: fail
+          found: 0
+          expected: 4
+        list_controls:
+          label: List controls
+          status: fail
+          found: 0
+          expected: 3
+        views_and_view_rules:
+          label: Views & view rules
+          status: fail
+          found: 0
+          expected: 3
+        properties:
+          label: Properties
+          status: fail
+          found: 0
+          expected: 5
+        relationships:
+          label: Relationships
+          status: fail
+          found: 0
+          expected: 4
+        records_seed_data:
+          label: Records (seed data)
+          status: fail
+          found: 0
+          expected: 22
+        data_sources_and_import_maps:
+          label: Data sources & import maps
+          status: fail
+          found: 0
+          expected: 2
+        cross_scope_privileges:
+          label: Cross-scope privileges
+          status: fail
+          found: 0
+          expected: 4
+        security_attributes:
+          label: Security attributes
+          status: fail
+          found: 0
+          expected: 1
+        security_data_filters:
+          label: Security data filters
+          status: fail
+          found: 0
+          expected: 2
+        js_modules:
+          label: JS modules
+          status: fail
+          found: 0
+          expected: 2
+        external_connections:
+          label: LDAP / external connections
+          status: fail
+          found: 0
+          expected: 1
+        atf_tests:
+          label: ATF tests (11 categories)
+          status: fail
+          found: 0
+          expected: 11
+    - run: 2
+      timestamp: '2026-04-03T12:41:15.295304'
+      scope: x_snc_apr_trv
+      score: 0/32
+      passed: 0
+      total: 32
+      components:
+        tables_and_columns:
+          label: Tables & columns
+          status: fail
+          found: 0
+          expected: 4
+        acls:
+          label: Access control lists (ACLs)
+          status: fail
+          found: 0
+          expected: 11
+        roles:
+          label: Roles
+          status: fail
+          found: 0
+          expected: 4
+        business_rules:
+          label: Business rules
+          status: fail
+          found: 0
+          expected: 7
+        client_scripts:
+          label: Client scripts
+          status: fail
+          found: 0
+          expected: 3
+        ui_policies:
+          label: UI policies
+          status: fail
+          found: 0
+          expected: 3
+        flows:
+          label: Flows (Workflow Automation)
+          status: fail
+          found: 0
+          expected: 3
+        email_notifications:
+          label: Email notifications
+          status: fail
+          found: 0
+          expected: 5
+        service_catalog_items:
+          label: Service catalog items
+          status: fail
+          found: 0
+          expected: 1
+        variables_and_variable_sets:
+          label: Variables & variable sets
+          status: fail
+          found: 0
+          expected: 2
+        catalog_client_scripts:
+          label: Catalog client scripts
+          status: fail
+          found: 0
+          expected: 3
+        catalog_ui_policies:
+          label: Catalog UI policies
+          status: fail
+          found: 0
+          expected: 2
+        script_includes:
+          label: Script includes
+          status: fail
+          found: 0
+          expected: 3
+        scripted_rest_apis:
+          label: Scripted REST APIs
+          status: fail
+          found: 0
+          expected: 1
+        ui_actions:
+          label: UI actions
+          status: fail
+          found: 0
+          expected: 5
+        ui_pages:
+          label: UI pages (React)
+          status: fail
+          found: 0
+          expected: 2
+        ui_formatters:
+          label: UI formatters (built-in)
+          status: fail
+          found: 0
+          expected: 2
+        workspaces:
+          label: Workspaces
+          status: fail
+          found: 0
+          expected: 1
+        app_menus_and_modules:
+          label: Application menus & modules
+          status: fail
+          found: 0
+          expected: 1
+        lists:
+          label: Lists
+          status: fail
+          found: 0
+          expected: 4
+        list_controls:
+          label: List controls
+          status: fail
+          found: 0
+          expected: 3
+        views_and_view_rules:
+          label: Views & view rules
+          status: fail
+          found: 0
+          expected: 3
+        properties:
+          label: Properties
+          status: fail
+          found: 0
+          expected: 5
+        relationships:
+          label: Relationships
+          status: fail
+          found: 0
+          expected: 4
+        records_seed_data:
+          label: Records (seed data)
+          status: fail
+          found: 0
+          expected: 22
+        data_sources_and_import_maps:
+          label: Data sources & import maps
+          status: fail
+          found: 0
+          expected: 2
+        cross_scope_privileges:
+          label: Cross-scope privileges
+          status: fail
+          found: 0
+          expected: 4
+        security_attributes:
+          label: Security attributes
+          status: fail
+          found: 0
+          expected: 1
+        security_data_filters:
+          label: Security data filters
+          status: fail
+          found: 0
+          expected: 2
+        js_modules:
+          label: JS modules
+          status: fail
+          found: 0
+          expected: 2
+        external_connections:
+          label: LDAP / external connections
+          status: fail
+          found: 0
+          expected: 1
+        atf_tests:
+          label: ATF tests (11 categories)
+          status: fail
+          found: 0
+          expected: 11
+  rest-workspace:
+    runs:
+    - run: 1
+      timestamp: '2026-04-03T12:43:41.946820'
+      scope: x_snc_apr_trv
+      score: 0/32
+      passed: 0
+      total: 32
+      token_count: null
+      wall_clock_seconds: null
+      verify_duration_seconds: 43.9
+      components:
+        tables_and_columns:
+          label: Tables & columns
+          status: fail
+          found: 0
+          expected: 4
+        acls:
+          label: Access control lists (ACLs)
+          status: fail
+          found: 0
+          expected: 11
+        roles:
+          label: Roles
+          status: fail
+          found: 0
+          expected: 4
+        business_rules:
+          label: Business rules
+          status: fail
+          found: 0
+          expected: 7
+        client_scripts:
+          label: Client scripts
+          status: fail
+          found: 0
+          expected: 3
+        ui_policies:
+          label: UI policies
+          status: fail
+          found: 0
+          expected: 3
+        flows:
+          label: Flows (Workflow Automation)
+          status: fail
+          found: 0
+          expected: 3
+        email_notifications:
+          label: Email notifications
+          status: fail
+          found: 0
+          expected: 5
+        service_catalog_items:
+          label: Service catalog items
+          status: fail
+          found: 0
+          expected: 1
+        variables_and_variable_sets:
+          label: Variables & variable sets
+          status: fail
+          found: 0
+          expected: 2
+        catalog_client_scripts:
+          label: Catalog client scripts
+          status: fail
+          found: 0
+          expected: 3
+        catalog_ui_policies:
+          label: Catalog UI policies
+          status: fail
+          found: 0
+          expected: 2
+        script_includes:
+          label: Script includes
+          status: fail
+          found: 0
+          expected: 3
+        scripted_rest_apis:
+          label: Scripted REST APIs
+          status: fail
+          found: 0
+          expected: 1
+        ui_actions:
+          label: UI actions
+          status: fail
+          found: 0
+          expected: 5
+        ui_pages:
+          label: UI pages (React)
+          status: fail
+          found: 0
+          expected: 2
+        ui_formatters:
+          label: UI formatters (built-in)
+          status: fail
+          found: 0
+          expected: 2
+        workspaces:
+          label: Workspaces
+          status: fail
+          found: 0
+          expected: 1
+        app_menus_and_modules:
+          label: Application menus & modules
+          status: fail
+          found: 0
+          expected: 1
+        lists:
+          label: Lists
+          status: fail
+          found: 0
+          expected: 4
+        list_controls:
+          label: List controls
+          status: fail
+          found: 0
+          expected: 3
+        views_and_view_rules:
+          label: Views & view rules
+          status: fail
+          found: 0
+          expected: 3
+        properties:
+          label: Properties
+          status: fail
+          found: 0
+          expected: 5
+        relationships:
+          label: Relationships
+          status: fail
+          found: 0
+          expected: 4
+        records_seed_data:
+          label: Records (seed data)
+          status: fail
+          found: 0
+          expected: 22
+        data_sources_and_import_maps:
+          label: Data sources & import maps
+          status: fail
+          found: 0
+          expected: 2
+        cross_scope_privileges:
+          label: Cross-scope privileges
+          status: fail
+          found: 0
+          expected: 4
+        security_attributes:
+          label: Security attributes
+          status: fail
+          found: 0
+          expected: 1
+        security_data_filters:
+          label: Security data filters
+          status: fail
+          found: 0
+          expected: 2
+        js_modules:
+          label: JS modules
+          status: fail
+          found: 0
+          expected: 2
+        external_connections:
+          label: LDAP / external connections
+          status: fail
+          found: 0
+          expected: 1
+        atf_tests:
+          label: ATF tests (11 categories)
+          status: fail
+          found: 0
+          expected: 11
+  sdk-primed:
+    runs:
+    - run: 1
+      timestamp: '2026-04-03T19:36:21.416690'
+      scope: x_snc_apr_trv
+      score: 25/32
+      passed: 25
+      total: 32
+      token_count: null
+      wall_clock_seconds: null
+      verify_duration_seconds: 44.2
+      components:
+        tables_and_columns:
+          label: Tables & columns
+          status: pass
+          found: 4
+          expected: 4
+        acls:
+          label: Access control lists (ACLs)
+          status: pass
+          found: 11
+          expected: 11
+        roles:
+          label: Roles
+          status: pass
+          found: 4
+          expected: 4
+        business_rules:
+          label: Business rules
+          status: pass
+          found: 7
+          expected: 7
+        client_scripts:
+          label: Client scripts
+          status: pass
+          found: 6
+          expected: 3
+        ui_policies:
+          label: UI policies
+          status: pass
+          found: 5
+          expected: 3
+        flows:
+          label: Flows (Workflow Automation)
+          status: fail
+          found: 0
+          expected: 3
+        email_notifications:
+          label: Email notifications
+          status: pass
+          found: 5
+          expected: 5
+        service_catalog_items:
+          label: Service catalog items
+          status: pass
+          found: 1
+          expected: 1
+        variables_and_variable_sets:
+          label: Variables & variable sets
+          status: pass
+          found: 2
+          expected: 2
+        catalog_client_scripts:
+          label: Catalog client scripts
+          status: pass
+          found: 3
+          expected: 3
+        catalog_ui_policies:
+          label: Catalog UI policies
+          status: pass
+          found: 2
+          expected: 2
+        script_includes:
+          label: Script includes
+          status: pass
+          found: 3
+          expected: 3
+        scripted_rest_apis:
+          label: Scripted REST APIs
+          status: pass
+          found: 1
+          expected: 1
+        ui_actions:
+          label: UI actions
+          status: pass
+          found: 5
+          expected: 5
+        ui_pages:
+          label: UI pages (React)
+          status: pass
+          found: 2
+          expected: 2
+        ui_formatters:
+          label: UI formatters (built-in)
+          status: pass
+          found: 2
+          expected: 2
+        workspaces:
+          label: Workspaces
+          status: pass
+          found: 1
+          expected: 1
+        app_menus_and_modules:
+          label: Application menus & modules
+          status: pass
+          found: 1
+          expected: 1
+        lists:
+          label: Lists
+          status: pass
+          found: 5
+          expected: 4
+        list_controls:
+          label: List controls
+          status: fail
+          found: 0
+          expected: 3
+        views_and_view_rules:
+          label: Views & view rules
+          status: pass
+          found: 3
+          expected: 3
+        properties:
+          label: Properties
+          status: pass
+          found: 5
+          expected: 5
+        relationships:
+          label: Relationships
+          status: pass
+          found: 4
+          expected: 4
+        records_seed_data:
+          label: Records (seed data)
+          status: fail
+          found: 0
+          expected: 22
+        data_sources_and_import_maps:
+          label: Data sources & import maps
+          status: fail
+          found: 0
+          expected: 2
+        cross_scope_privileges:
+          label: Cross-scope privileges
+          status: pass
+          found: 4
+          expected: 4
+        security_attributes:
+          label: Security attributes
+          status: fail
+          found: 0
+          expected: 1
+        security_data_filters:
+          label: Security data filters
+          status: fail
+          found: 0
+          expected: 2
+        js_modules:
+          label: JS modules
+          status: fail
+          found: 0
+          expected: 2
+        external_connections:
+          label: LDAP / external connections
+          status: pass
+          found: 1
+          expected: 1
+        atf_tests:
+          label: ATF tests (11 categories)
+          status: pass
+          found: 11
+          expected: 11
+    - run: 2
+      timestamp: '2026-04-03T19:41:31.574596'
+      scope: x_snc_apr_trv
+      score: 30/32
+      passed: 30
+      total: 32
+      token_count: null
+      wall_clock_seconds: null
+      verify_duration_seconds: 45.0
+      components:
+        tables_and_columns:
+          label: Tables & columns
+          status: pass
+          found: 4
+          expected: 4
+        acls:
+          label: Access control lists (ACLs)
+          status: pass
+          found: 13
+          expected: 11
+        roles:
+          label: Roles
+          status: pass
+          found: 4
+          expected: 4
+        business_rules:
+          label: Business rules
+          status: pass
+          found: 7
+          expected: 7
+        client_scripts:
+          label: Client scripts
+          status: pass
+          found: 6
+          expected: 3
+        ui_policies:
+          label: UI policies
+          status: pass
+          found: 5
+          expected: 3
+        flows:
+          label: Flows (Workflow Automation)
+          status: fail
+          found: 0
+          expected: 3
+        email_notifications:
+          label: Email notifications
+          status: pass
+          found: 5
+          expected: 5
+        service_catalog_items:
+          label: Service catalog items
+          status: pass
+          found: 1
+          expected: 1
+        variables_and_variable_sets:
+          label: Variables & variable sets
+          status: pass
+          found: 2
+          expected: 2
+        catalog_client_scripts:
+          label: Catalog client scripts
+          status: pass
+          found: 3
+          expected: 3
+        catalog_ui_policies:
+          label: Catalog UI policies
+          status: pass
+          found: 2
+          expected: 2
+        script_includes:
+          label: Script includes
+          status: pass
+          found: 3
+          expected: 3
+        scripted_rest_apis:
+          label: Scripted REST APIs
+          status: pass
+          found: 1
+          expected: 1
+        ui_actions:
+          label: UI actions
+          status: pass
+          found: 5
+          expected: 5
+        ui_pages:
+          label: UI pages (React)
+          status: pass
+          found: 2
+          expected: 2
+        ui_formatters:
+          label: UI formatters (built-in)
+          status: pass
+          found: 2
+          expected: 2
+        workspaces:
+          label: Workspaces
+          status: pass
+          found: 1
+          expected: 1
+        app_menus_and_modules:
+          label: Application menus & modules
+          status: pass
+          found: 1
+          expected: 1
+        lists:
+          label: Lists
+          status: pass
+          found: 5
+          expected: 4
+        list_controls:
+          label: List controls
+          status: pass
+          found: 3
+          expected: 3
+        views_and_view_rules:
+          label: Views & view rules
+          status: pass
+          found: 3
+          expected: 3
+        properties:
+          label: Properties
+          status: pass
+          found: 5
+          expected: 5
+        relationships:
+          label: Relationships
+          status: pass
+          found: 4
+          expected: 4
+        records_seed_data:
+          label: Records (seed data)
+          status: fail
+          found: 0
+          expected: 22
+        data_sources_and_import_maps:
+          label: Data sources & import maps
+          status: pass
+          found: 2
+          expected: 2
+        cross_scope_privileges:
+          label: Cross-scope privileges
+          status: pass
+          found: 4
+          expected: 4
+        security_attributes:
+          label: Security attributes
+          status: pass
+          found: 1
+          expected: 1
+        security_data_filters:
+          label: Security data filters
+          status: pass
+          found: 2
+          expected: 2
+        js_modules:
+          label: JS modules
+          status: pass
+          found: 2
+          expected: 2
+        external_connections:
+          label: LDAP / external connections
+          status: pass
+          found: 1
+          expected: 1
+        atf_tests:
+          label: ATF tests (11 categories)
+          status: pass
+          found: 11
+          expected: 11
+    - run: 3
+      timestamp: '2026-04-03T19:48:55.055175'
+      scope: x_snc_apr_trv
+      score: 32/32
+      passed: 32
+      total: 32
+      token_count: null
+      wall_clock_seconds: null
+      verify_duration_seconds: 50.5
+      components:
+        tables_and_columns:
+          label: Tables & columns
+          status: pass
+          found: 4
+          expected: 4
+        acls:
+          label: Access control lists (ACLs)
+          status: pass
+          found: 13
+          expected: 11
+        roles:
+          label: Roles
+          status: pass
+          found: 4
+          expected: 4
+        business_rules:
+          label: Business rules
+          status: pass
+          found: 7
+          expected: 7
+        client_scripts:
+          label: Client scripts
+          status: pass
+          found: 6
+          expected: 3
+        ui_policies:
+          label: UI policies
+          status: pass
+          found: 5
+          expected: 3
+        flows:
+          label: Flows (Workflow Automation)
+          status: pass
+          found: 3
+          expected: 3
+        email_notifications:
+          label: Email notifications
+          status: pass
+          found: 5
+          expected: 5
+        service_catalog_items:
+          label: Service catalog items
+          status: pass
+          found: 1
+          expected: 1
+        variables_and_variable_sets:
+          label: Variables & variable sets
+          status: pass
+          found: 2
+          expected: 2
+        catalog_client_scripts:
+          label: Catalog client scripts
+          status: pass
+          found: 3
+          expected: 3
+        catalog_ui_policies:
+          label: Catalog UI policies
+          status: pass
+          found: 2
+          expected: 2
+        script_includes:
+          label: Script includes
+          status: pass
+          found: 3
+          expected: 3
+        scripted_rest_apis:
+          label: Scripted REST APIs
+          status: pass
+          found: 1
+          expected: 1
+        ui_actions:
+          label: UI actions
+          status: pass
+          found: 5
+          expected: 5
+        ui_pages:
+          label: UI pages (React)
+          status: pass
+          found: 2
+          expected: 2
+        ui_formatters:
+          label: UI formatters (built-in)
+          status: pass
+          found: 2
+          expected: 2
+        workspaces:
+          label: Workspaces
+          status: pass
+          found: 1
+          expected: 1
+        app_menus_and_modules:
+          label: Application menus & modules
+          status: pass
+          found: 1
+          expected: 1
+        lists:
+          label: Lists
+          status: pass
+          found: 5
+          expected: 4
+        list_controls:
+          label: List controls
+          status: pass
+          found: 3
+          expected: 3
+        views_and_view_rules:
+          label: Views & view rules
+          status: pass
+          found: 3
+          expected: 3
+        properties:
+          label: Properties
+          status: pass
+          found: 5
+          expected: 5
+        relationships:
+          label: Relationships
+          status: pass
+          found: 4
+          expected: 4
+        records_seed_data:
+          label: Records (seed data)
+          status: pass
+          found: 22
+          expected: 22
+        data_sources_and_import_maps:
+          label: Data sources & import maps
+          status: pass
+          found: 2
+          expected: 2
+        cross_scope_privileges:
+          label: Cross-scope privileges
+          status: pass
+          found: 6
+          expected: 4
+        security_attributes:
+          label: Security attributes
+          status: pass
+          found: 1
+          expected: 1
+        security_data_filters:
+          label: Security data filters
+          status: pass
+          found: 2
+          expected: 2
+        js_modules:
+          label: JS modules
+          status: pass
+          found: 2
+          expected: 2
+        external_connections:
+          label: LDAP / external connections
+          status: pass
+          found: 1
+          expected: 1
+        atf_tests:
+          label: ATF tests (11 categories)
+          status: pass
+          found: 11
+          expected: 11
+    - run: 4
+      timestamp: '2026-04-03T19:53:44.446152'
+      scope: x_snc_apr_trv
+      score: 32/32
+      passed: 32
+      total: 32
+      token_count: 500000
+      wall_clock_seconds: 8100
+      verify_duration_seconds: 46.5
+      components:
+        tables_and_columns:
+          label: Tables & columns
+          status: pass
+          found: 4
+          expected: 4
+        acls:
+          label: Access control lists (ACLs)
+          status: pass
+          found: 13
+          expected: 11
+        roles:
+          label: Roles
+          status: pass
+          found: 4
+          expected: 4
+        business_rules:
+          label: Business rules
+          status: pass
+          found: 7
+          expected: 7
+        client_scripts:
+          label: Client scripts
+          status: pass
+          found: 6
+          expected: 3
+        ui_policies:
+          label: UI policies
+          status: pass
+          found: 5
+          expected: 3
+        flows:
+          label: Flows (Workflow Automation)
+          status: pass
+          found: 3
+          expected: 3
+        email_notifications:
+          label: Email notifications
+          status: pass
+          found: 5
+          expected: 5
+        service_catalog_items:
+          label: Service catalog items
+          status: pass
+          found: 1
+          expected: 1
+        variables_and_variable_sets:
+          label: Variables & variable sets
+          status: pass
+          found: 2
+          expected: 2
+        catalog_client_scripts:
+          label: Catalog client scripts
+          status: pass
+          found: 3
+          expected: 3
+        catalog_ui_policies:
+          label: Catalog UI policies
+          status: pass
+          found: 2
+          expected: 2
+        script_includes:
+          label: Script includes
+          status: pass
+          found: 3
+          expected: 3
+        scripted_rest_apis:
+          label: Scripted REST APIs
+          status: pass
+          found: 1
+          expected: 1
+        ui_actions:
+          label: UI actions
+          status: pass
+          found: 5
+          expected: 5
+        ui_pages:
+          label: UI pages (React)
+          status: pass
+          found: 2
+          expected: 2
+        ui_formatters:
+          label: UI formatters (built-in)
+          status: pass
+          found: 2
+          expected: 2
+        workspaces:
+          label: Workspaces
+          status: pass
+          found: 1
+          expected: 1
+        app_menus_and_modules:
+          label: Application menus & modules
+          status: pass
+          found: 1
+          expected: 1
+        lists:
+          label: Lists
+          status: pass
+          found: 5
+          expected: 4
+        list_controls:
+          label: List controls
+          status: pass
+          found: 3
+          expected: 3
+        views_and_view_rules:
+          label: Views & view rules
+          status: pass
+          found: 3
+          expected: 3
+        properties:
+          label: Properties
+          status: pass
+          found: 5
+          expected: 5
+        relationships:
+          label: Relationships
+          status: pass
+          found: 4
+          expected: 4
+        records_seed_data:
+          label: Records (seed data)
+          status: pass
+          found: 22
+          expected: 22
+        data_sources_and_import_maps:
+          label: Data sources & import maps
+          status: pass
+          found: 2
+          expected: 2
+        cross_scope_privileges:
+          label: Cross-scope privileges
+          status: pass
+          found: 6
+          expected: 4
+        security_attributes:
+          label: Security attributes
+          status: pass
+          found: 1
+          expected: 1
+        security_data_filters:
+          label: Security data filters
+          status: pass
+          found: 2
+          expected: 2
+        js_modules:
+          label: JS modules
+          status: pass
+          found: 2
+          expected: 2
+        external_connections:
+          label: LDAP / external connections
+          status: pass
+          found: 1
+          expected: 1
+        atf_tests:
+          label: ATF tests (11 categories)
+          status: pass
+          found: 11
+          expected: 11
+  sdk-cold:
+    runs:
+    - run: 1
+      timestamp: '2026-04-04T00:15:10.138443'
+      scope: x_snc_apr_trv
+      score: 31/32
+      passed: 31
+      total: 32
+      token_count: null
+      wall_clock_seconds: null
+      verify_duration_seconds: 43.9
+      components:
+        tables_and_columns:
+          label: Tables & columns
+          status: pass
+          found: 4
+          expected: 4
+        acls:
+          label: Access control lists (ACLs)
+          status: pass
+          found: 26
+          expected: 11
+        roles:
+          label: Roles
+          status: pass
+          found: 4
+          expected: 4
+        business_rules:
+          label: Business rules
+          status: pass
+          found: 14
+          expected: 7
+        client_scripts:
+          label: Client scripts
+          status: pass
+          found: 12
+          expected: 3
+        ui_policies:
+          label: UI policies
+          status: pass
+          found: 10
+          expected: 3
+        flows:
+          label: Flows (Workflow Automation)
+          status: pass
+          found: 6
+          expected: 3
+        email_notifications:
+          label: Email notifications
+          status: pass
+          found: 10
+          expected: 5
+        service_catalog_items:
+          label: Service catalog items
+          status: pass
+          found: 2
+          expected: 1
+        variables_and_variable_sets:
+          label: Variables & variable sets
+          status: pass
+          found: 2
+          expected: 2
+        catalog_client_scripts:
+          label: Catalog client scripts
+          status: pass
+          found: 6
+          expected: 3
+        catalog_ui_policies:
+          label: Catalog UI policies
+          status: pass
+          found: 4
+          expected: 2
+        script_includes:
+          label: Script includes
+          status: pass
+          found: 6
+          expected: 3
+        scripted_rest_apis:
+          label: Scripted REST APIs
+          status: pass
+          found: 2
+          expected: 1
+        ui_actions:
+          label: UI actions
+          status: pass
+          found: 10
+          expected: 5
+        ui_pages:
+          label: UI pages (React)
+          status: pass
+          found: 4
+          expected: 2
+        ui_formatters:
+          label: UI formatters (built-in)
+          status: pass
+          found: 4
+          expected: 2
+        workspaces:
+          label: Workspaces
+          status: pass
+          found: 2
+          expected: 1
+        app_menus_and_modules:
+          label: Application menus & modules
+          status: pass
+          found: 2
+          expected: 1
+        lists:
+          label: Lists
+          status: pass
+          found: 9
+          expected: 4
+        list_controls:
+          label: List controls
+          status: pass
+          found: 6
+          expected: 3
+        views_and_view_rules:
+          label: Views & view rules
+          status: pass
+          found: 9
+          expected: 3
+        properties:
+          label: Properties
+          status: pass
+          found: 5
+          expected: 5
+        relationships:
+          label: Relationships
+          status: pass
+          found: 8
+          expected: 4
+        records_seed_data:
+          label: Records (seed data)
+          status: fail
+          found: 0
+          expected: 22
+        data_sources_and_import_maps:
+          label: Data sources & import maps
+          status: pass
+          found: 4
+          expected: 2
+        cross_scope_privileges:
+          label: Cross-scope privileges
+          status: pass
+          found: 6
+          expected: 4
+        security_attributes:
+          label: Security attributes
+          status: pass
+          found: 2
+          expected: 1
+        security_data_filters:
+          label: Security data filters
+          status: pass
+          found: 2
+          expected: 2
+        js_modules:
+          label: JS modules
+          status: pass
+          found: 4
+          expected: 2
+        external_connections:
+          label: LDAP / external connections
+          status: pass
+          found: 2
+          expected: 1
+        atf_tests:
+          label: ATF tests (11 categories)
+          status: pass
+          found: 22
+          expected: 11
+    - run: 2
+      timestamp: '2026-04-04T00:20:15.884455'
+      scope: x_snc_apr_trv
+      score: 31/32
+      passed: 31
+      total: 32
+      token_count: null
+      wall_clock_seconds: null
+      verify_duration_seconds: 44.6
+      components:
+        tables_and_columns:
+          label: Tables & columns
+          status: pass
+          found: 4
+          expected: 4
+        acls:
+          label: Access control lists (ACLs)
+          status: pass
+          found: 26
+          expected: 11
+        roles:
+          label: Roles
+          status: pass
+          found: 4
+          expected: 4
+        business_rules:
+          label: Business rules
+          status: pass
+          found: 14
+          expected: 7
+        client_scripts:
+          label: Client scripts
+          status: pass
+          found: 12
+          expected: 3
+        ui_policies:
+          label: UI policies
+          status: pass
+          found: 10
+          expected: 3
+        flows:
+          label: Flows (Workflow Automation)
+          status: pass
+          found: 6
+          expected: 3
+        email_notifications:
+          label: Email notifications
+          status: pass
+          found: 10
+          expected: 5
+        service_catalog_items:
+          label: Service catalog items
+          status: pass
+          found: 2
+          expected: 1
+        variables_and_variable_sets:
+          label: Variables & variable sets
+          status: pass
+          found: 2
+          expected: 2
+        catalog_client_scripts:
+          label: Catalog client scripts
+          status: pass
+          found: 6
+          expected: 3
+        catalog_ui_policies:
+          label: Catalog UI policies
+          status: pass
+          found: 4
+          expected: 2
+        script_includes:
+          label: Script includes
+          status: pass
+          found: 6
+          expected: 3
+        scripted_rest_apis:
+          label: Scripted REST APIs
+          status: pass
+          found: 2
+          expected: 1
+        ui_actions:
+          label: UI actions
+          status: pass
+          found: 10
+          expected: 5
+        ui_pages:
+          label: UI pages (React)
+          status: pass
+          found: 4
+          expected: 2
+        ui_formatters:
+          label: UI formatters (built-in)
+          status: pass
+          found: 4
+          expected: 2
+        workspaces:
+          label: Workspaces
+          status: pass
+          found: 2
+          expected: 1
+        app_menus_and_modules:
+          label: Application menus & modules
+          status: pass
+          found: 2
+          expected: 1
+        lists:
+          label: Lists
+          status: pass
+          found: 9
+          expected: 4
+        list_controls:
+          label: List controls
+          status: pass
+          found: 6
+          expected: 3
+        views_and_view_rules:
+          label: Views & view rules
+          status: pass
+          found: 13
+          expected: 3
+        properties:
+          label: Properties
+          status: pass
+          found: 5
+          expected: 5
+        relationships:
+          label: Relationships
+          status: pass
+          found: 8
+          expected: 4
+        records_seed_data:
+          label: Records (seed data)
+          status: fail
+          found: 0
+          expected: 22
+        data_sources_and_import_maps:
+          label: Data sources & import maps
+          status: pass
+          found: 4
+          expected: 2
+        cross_scope_privileges:
+          label: Cross-scope privileges
+          status: pass
+          found: 6
+          expected: 4
+        security_attributes:
+          label: Security attributes
+          status: pass
+          found: 2
+          expected: 1
+        security_data_filters:
+          label: Security data filters
+          status: pass
+          found: 2
+          expected: 2
+        js_modules:
+          label: JS modules
+          status: pass
+          found: 4
+          expected: 2
+        external_connections:
+          label: LDAP / external connections
+          status: pass
+          found: 2
+          expected: 1
+        atf_tests:
+          label: ATF tests (11 categories)
+          status: pass
+          found: 22
+          expected: 11
+    - run: 3
+      timestamp: '2026-04-04T00:23:55.842462'
+      scope: x_snc_apr_trv
+      score: 32/32
+      passed: 32
+      total: 32
+      token_count: null
+      wall_clock_seconds: null
+      verify_duration_seconds: 46.6
+      components:
+        tables_and_columns:
+          label: Tables & columns
+          status: pass
+          found: 4
+          expected: 4
+        acls:
+          label: Access control lists (ACLs)
+          status: pass
+          found: 26
+          expected: 11
+        roles:
+          label: Roles
+          status: pass
+          found: 4
+          expected: 4
+        business_rules:
+          label: Business rules
+          status: pass
+          found: 14
+          expected: 7
+        client_scripts:
+          label: Client scripts
+          status: pass
+          found: 12
+          expected: 3
+        ui_policies:
+          label: UI policies
+          status: pass
+          found: 10
+          expected: 3
+        flows:
+          label: Flows (Workflow Automation)
+          status: pass
+          found: 6
+          expected: 3
+        email_notifications:
+          label: Email notifications
+          status: pass
+          found: 10
+          expected: 5
+        service_catalog_items:
+          label: Service catalog items
+          status: pass
+          found: 2
+          expected: 1
+        variables_and_variable_sets:
+          label: Variables & variable sets
+          status: pass
+          found: 2
+          expected: 2
+        catalog_client_scripts:
+          label: Catalog client scripts
+          status: pass
+          found: 6
+          expected: 3
+        catalog_ui_policies:
+          label: Catalog UI policies
+          status: pass
+          found: 4
+          expected: 2
+        script_includes:
+          label: Script includes
+          status: pass
+          found: 6
+          expected: 3
+        scripted_rest_apis:
+          label: Scripted REST APIs
+          status: pass
+          found: 2
+          expected: 1
+        ui_actions:
+          label: UI actions
+          status: pass
+          found: 10
+          expected: 5
+        ui_pages:
+          label: UI pages (React)
+          status: pass
+          found: 4
+          expected: 2
+        ui_formatters:
+          label: UI formatters (built-in)
+          status: pass
+          found: 4
+          expected: 2
+        workspaces:
+          label: Workspaces
+          status: pass
+          found: 2
+          expected: 1
+        app_menus_and_modules:
+          label: Application menus & modules
+          status: pass
+          found: 2
+          expected: 1
+        lists:
+          label: Lists
+          status: pass
+          found: 9
+          expected: 4
+        list_controls:
+          label: List controls
+          status: pass
+          found: 6
+          expected: 3
+        views_and_view_rules:
+          label: Views & view rules
+          status: pass
+          found: 17
+          expected: 3
+        properties:
+          label: Properties
+          status: pass
+          found: 5
+          expected: 5
+        relationships:
+          label: Relationships
+          status: pass
+          found: 8
+          expected: 4
+        records_seed_data:
+          label: Records (seed data)
+          status: pass
+          found: 44
+          expected: 22
+        data_sources_and_import_maps:
+          label: Data sources & import maps
+          status: pass
+          found: 4
+          expected: 2
+        cross_scope_privileges:
+          label: Cross-scope privileges
+          status: pass
+          found: 6
+          expected: 4
+        security_attributes:
+          label: Security attributes
+          status: pass
+          found: 2
+          expected: 1
+        security_data_filters:
+          label: Security data filters
+          status: pass
+          found: 2
+          expected: 2
+        js_modules:
+          label: JS modules
+          status: pass
+          found: 4
+          expected: 2
+        external_connections:
+          label: LDAP / external connections
+          status: pass
+          found: 2
+          expected: 1
+        atf_tests:
+          label: ATF tests (11 categories)
+          status: pass
+          found: 22
+          expected: 11
+    - run: 4
+      timestamp: '2026-04-04T00:30:57.019815'
+      scope: x_snc_apr_trv
+      score: 32/32
+      passed: 32
+      total: 32
+      token_count: 450000
+      wall_clock_seconds: 7500
+      verify_duration_seconds: 45.5
+      components:
+        tables_and_columns:
+          label: Tables & columns
+          status: pass
+          found: 4
+          expected: 4
+        acls:
+          label: Access control lists (ACLs)
+          status: pass
+          found: 26
+          expected: 11
+        roles:
+          label: Roles
+          status: pass
+          found: 4
+          expected: 4
+        business_rules:
+          label: Business rules
+          status: pass
+          found: 14
+          expected: 7
+        client_scripts:
+          label: Client scripts
+          status: pass
+          found: 12
+          expected: 3
+        ui_policies:
+          label: UI policies
+          status: pass
+          found: 10
+          expected: 3
+        flows:
+          label: Flows (Workflow Automation)
+          status: pass
+          found: 6
+          expected: 3
+        email_notifications:
+          label: Email notifications
+          status: pass
+          found: 10
+          expected: 5
+        service_catalog_items:
+          label: Service catalog items
+          status: pass
+          found: 2
+          expected: 1
+        variables_and_variable_sets:
+          label: Variables & variable sets
+          status: pass
+          found: 2
+          expected: 2
+        catalog_client_scripts:
+          label: Catalog client scripts
+          status: pass
+          found: 6
+          expected: 3
+        catalog_ui_policies:
+          label: Catalog UI policies
+          status: pass
+          found: 4
+          expected: 2
+        script_includes:
+          label: Script includes
+          status: pass
+          found: 6
+          expected: 3
+        scripted_rest_apis:
+          label: Scripted REST APIs
+          status: pass
+          found: 2
+          expected: 1
+        ui_actions:
+          label: UI actions
+          status: pass
+          found: 10
+          expected: 5
+        ui_pages:
+          label: UI pages (React)
+          status: pass
+          found: 4
+          expected: 2
+        ui_formatters:
+          label: UI formatters (built-in)
+          status: pass
+          found: 4
+          expected: 2
+        workspaces:
+          label: Workspaces
+          status: pass
+          found: 2
+          expected: 1
+        app_menus_and_modules:
+          label: Application menus & modules
+          status: pass
+          found: 2
+          expected: 1
+        lists:
+          label: Lists
+          status: pass
+          found: 9
+          expected: 4
+        list_controls:
+          label: List controls
+          status: pass
+          found: 6
+          expected: 3
+        views_and_view_rules:
+          label: Views & view rules
+          status: pass
+          found: 17
+          expected: 3
+        properties:
+          label: Properties
+          status: pass
+          found: 5
+          expected: 5
+        relationships:
+          label: Relationships
+          status: pass
+          found: 8
+          expected: 4
+        records_seed_data:
+          label: Records (seed data)
+          status: pass
+          found: 44
+          expected: 22
+        data_sources_and_import_maps:
+          label: Data sources & import maps
+          status: pass
+          found: 4
+          expected: 2
+        cross_scope_privileges:
+          label: Cross-scope privileges
+          status: pass
+          found: 6
+          expected: 4
+        security_attributes:
+          label: Security attributes
+          status: pass
+          found: 2
+          expected: 1
+        security_data_filters:
+          label: Security data filters
+          status: pass
+          found: 2
+          expected: 2
+        js_modules:
+          label: JS modules
+          status: pass
+          found: 4
+          expected: 2
+        external_connections:
+          label: LDAP / external connections
+          status: pass
+          found: 2
+          expected: 1
+        atf_tests:
+          label: ATF tests (11 categories)
+          status: pass
+          found: 22
+          expected: 11
+    - run: 5
+      timestamp: '2026-04-04T17:51:35.097932'
+      scope: x_snc_apr_tv3b
+      score: 30/32
+      passed: 30
+      total: 32
+      token_count: null
+      wall_clock_seconds: null
+      verify_duration_seconds: 51.4
+      components:
+        tables_and_columns:
+          label: Tables & columns
+          status: pass
+          found: 4
+          expected: 4
+        acls:
+          label: Access control lists (ACLs)
+          status: pass
+          found: 13
+          expected: 11
+        roles:
+          label: Roles
+          status: pass
+          found: 4
+          expected: 4
+        business_rules:
+          label: Business rules
+          status: pass
+          found: 7
+          expected: 7
+        client_scripts:
+          label: Client scripts
+          status: pass
+          found: 6
+          expected: 3
+        ui_policies:
+          label: UI policies
+          status: pass
+          found: 5
+          expected: 3
+        flows:
+          label: Flows (Workflow Automation)
+          status: pass
+          found: 3
+          expected: 3
+        email_notifications:
+          label: Email notifications
+          status: pass
+          found: 5
+          expected: 5
+        service_catalog_items:
+          label: Service catalog items
+          status: pass
+          found: 1
+          expected: 1
+        variables_and_variable_sets:
+          label: Variables & variable sets
+          status: fail
+          found: 0
+          expected: 2
+        catalog_client_scripts:
+          label: Catalog client scripts
+          status: pass
+          found: 3
+          expected: 3
+        catalog_ui_policies:
+          label: Catalog UI policies
+          status: pass
+          found: 2
+          expected: 2
+        script_includes:
+          label: Script includes
+          status: pass
+          found: 3
+          expected: 3
+        scripted_rest_apis:
+          label: Scripted REST APIs
+          status: pass
+          found: 1
+          expected: 1
+        ui_actions:
+          label: UI actions
+          status: pass
+          found: 5
+          expected: 5
+        ui_pages:
+          label: UI pages (React)
+          status: pass
+          found: 2
+          expected: 2
+        ui_formatters:
+          label: UI formatters (built-in)
+          status: pass
+          found: 2
+          expected: 2
+        workspaces:
+          label: Workspaces
+          status: pass
+          found: 1
+          expected: 1
+        app_menus_and_modules:
+          label: Application menus & modules
+          status: pass
+          found: 1
+          expected: 1
+        lists:
+          label: Lists
+          status: pass
+          found: 4
+          expected: 4
+        list_controls:
+          label: List controls
+          status: pass
+          found: 3
+          expected: 3
+        views_and_view_rules:
+          label: Views & view rules
+          status: pass
+          found: 7
+          expected: 3
+        properties:
+          label: Properties
+          status: pass
+          found: 5
+          expected: 5
+        relationships:
+          label: Relationships
+          status: pass
+          found: 4
+          expected: 4
+        records_seed_data:
+          label: Records (seed data)
+          status: pass
+          found: 22
+          expected: 22
+        data_sources_and_import_maps:
+          label: Data sources & import maps
+          status: pass
+          found: 2
+          expected: 2
+        cross_scope_privileges:
+          label: Cross-scope privileges
+          status: pass
+          found: 4
+          expected: 4
+        security_attributes:
+          label: Security attributes
+          status: pass
+          found: 1
+          expected: 1
+        security_data_filters:
+          label: Security data filters
+          status: fail
+          found: 0
+          expected: 2
+        js_modules:
+          label: JS modules
+          status: pass
+          found: 2
+          expected: 2
+        external_connections:
+          label: LDAP / external connections
+          status: pass
+          found: 1
+          expected: 1
+        atf_tests:
+          label: ATF tests (11 categories)
+          status: pass
+          found: 11
+          expected: 11
+    - run: 6
+      timestamp: '2026-04-04T17:57:46.003125'
+      scope: x_snc_apr_tv3b
+      score: 32/32
+      passed: 32
+      total: 32
+      token_count: null
+      wall_clock_seconds: null
+      verify_duration_seconds: 50.7
+      components:
+        tables_and_columns:
+          label: Tables & columns
+          status: pass
+          found: 4
+          expected: 4
+        acls:
+          label: Access control lists (ACLs)
+          status: pass
+          found: 13
+          expected: 11
+        roles:
+          label: Roles
+          status: pass
+          found: 4
+          expected: 4
+        business_rules:
+          label: Business rules
+          status: pass
+          found: 7
+          expected: 7
+        client_scripts:
+          label: Client scripts
+          status: pass
+          found: 6
+          expected: 3
+        ui_policies:
+          label: UI policies
+          status: pass
+          found: 5
+          expected: 3
+        flows:
+          label: Flows (Workflow Automation)
+          status: pass
+          found: 3
+          expected: 3
+        email_notifications:
+          label: Email notifications
+          status: pass
+          found: 5
+          expected: 5
+        service_catalog_items:
+          label: Service catalog items
+          status: pass
+          found: 1
+          expected: 1
+        variables_and_variable_sets:
+          label: Variables & variable sets
+          status: pass
+          found: 2
+          expected: 2
+        catalog_client_scripts:
+          label: Catalog client scripts
+          status: pass
+          found: 3
+          expected: 3
+        catalog_ui_policies:
+          label: Catalog UI policies
+          status: pass
+          found: 2
+          expected: 2
+        script_includes:
+          label: Script includes
+          status: pass
+          found: 3
+          expected: 3
+        scripted_rest_apis:
+          label: Scripted REST APIs
+          status: pass
+          found: 1
+          expected: 1
+        ui_actions:
+          label: UI actions
+          status: pass
+          found: 5
+          expected: 5
+        ui_pages:
+          label: UI pages (React)
+          status: pass
+          found: 2
+          expected: 2
+        ui_formatters:
+          label: UI formatters (built-in)
+          status: pass
+          found: 2
+          expected: 2
+        workspaces:
+          label: Workspaces
+          status: pass
+          found: 1
+          expected: 1
+        app_menus_and_modules:
+          label: Application menus & modules
+          status: pass
+          found: 1
+          expected: 1
+        lists:
+          label: Lists
+          status: pass
+          found: 4
+          expected: 4
+        list_controls:
+          label: List controls
+          status: pass
+          found: 3
+          expected: 3
+        views_and_view_rules:
+          label: Views & view rules
+          status: pass
+          found: 11
+          expected: 3
+        properties:
+          label: Properties
+          status: pass
+          found: 5
+          expected: 5
+        relationships:
+          label: Relationships
+          status: pass
+          found: 4
+          expected: 4
+        records_seed_data:
+          label: Records (seed data)
+          status: pass
+          found: 22
+          expected: 22
+        data_sources_and_import_maps:
+          label: Data sources & import maps
+          status: pass
+          found: 2
+          expected: 2
+        cross_scope_privileges:
+          label: Cross-scope privileges
+          status: pass
+          found: 4
+          expected: 4
+        security_attributes:
+          label: Security attributes
+          status: pass
+          found: 1
+          expected: 1
+        security_data_filters:
+          label: Security data filters
+          status: pass
+          found: 2
+          expected: 2
+        js_modules:
+          label: JS modules
+          status: pass
+          found: 2
+          expected: 2
+        external_connections:
+          label: LDAP / external connections
+          status: pass
+          found: 1
+          expected: 1
+        atf_tests:
+          label: ATF tests (11 categories)
+          status: pass
+          found: 11
+          expected: 11
+  buildagent:
+    runs:
+    - run: 1
+      timestamp: '2026-04-04T03:00:28.064086'
+      scope: x_snc_travel_rcsg8
+      score: 28/32
+      passed: 28
+      total: 32
+      token_count: 300
+      wall_clock_seconds: 2400
+      verify_duration_seconds: 45.5
+      components:
+        tables_and_columns:
+          label: Tables & columns
+          status: pass
+          found: 4
+          expected: 4
+        acls:
+          label: Access control lists (ACLs)
+          status: pass
+          found: 12
+          expected: 11
+        roles:
+          label: Roles
+          status: pass
+          found: 4
+          expected: 4
+        business_rules:
+          label: Business rules
+          status: pass
+          found: 7
+          expected: 7
+        client_scripts:
+          label: Client scripts
+          status: pass
+          found: 6
+          expected: 3
+        ui_policies:
+          label: UI policies
+          status: pass
+          found: 5
+          expected: 3
+        flows:
+          label: Flows (Workflow Automation)
+          status: pass
+          found: 3
+          expected: 3
+        email_notifications:
+          label: Email notifications
+          status: pass
+          found: 5
+          expected: 5
+        service_catalog_items:
+          label: Service catalog items
+          status: pass
+          found: 1
+          expected: 1
+        variables_and_variable_sets:
+          label: Variables & variable sets
+          status: pass
+          found: 2
+          expected: 2
+        catalog_client_scripts:
+          label: Catalog client scripts
+          status: pass
+          found: 3
+          expected: 3
+        catalog_ui_policies:
+          label: Catalog UI policies
+          status: pass
+          found: 2
+          expected: 2
+        script_includes:
+          label: Script includes
+          status: pass
+          found: 3
+          expected: 3
+        scripted_rest_apis:
+          label: Scripted REST APIs
+          status: pass
+          found: 1
+          expected: 1
+        ui_actions:
+          label: UI actions
+          status: pass
+          found: 5
+          expected: 5
+        ui_pages:
+          label: UI pages (React)
+          status: pass
+          found: 2
+          expected: 2
+        ui_formatters:
+          label: UI formatters (built-in)
+          status: pass
+          found: 2
+          expected: 2
+        workspaces:
+          label: Workspaces
+          status: pass
+          found: 1
+          expected: 1
+        app_menus_and_modules:
+          label: Application menus & modules
+          status: pass
+          found: 1
+          expected: 1
+        lists:
+          label: Lists
+          status: pass
+          found: 4
+          expected: 4
+        list_controls:
+          label: List controls
+          status: pass
+          found: 3
+          expected: 3
+        views_and_view_rules:
+          label: Views & view rules
+          status: pass
+          found: 3
+          expected: 3
+        properties:
+          label: Properties
+          status: pass
+          found: 5
+          expected: 5
+        relationships:
+          label: Relationships
+          status: pass
+          found: 4
+          expected: 4
+        records_seed_data:
+          label: Records (seed data)
+          status: fail
+          found: 20
+          expected: 22
+        data_sources_and_import_maps:
+          label: Data sources & import maps
+          status: pass
+          found: 2
+          expected: 2
+        cross_scope_privileges:
+          label: Cross-scope privileges
+          status: pass
+          found: 4
+          expected: 4
+        security_attributes:
+          label: Security attributes
+          status: fail
+          found: 0
+          expected: 1
+        security_data_filters:
+          label: Security data filters
+          status: fail
+          found: 0
+          expected: 2
+        js_modules:
+          label: JS modules
+          status: fail
+          found: 0
+          expected: 2
+        external_connections:
+          label: LDAP / external connections
+          status: pass
+          found: 1
+          expected: 1
+        atf_tests:
+          label: ATF tests (11 categories)
+          status: pass
+          found: 11
+          expected: 11

@@ -1,0 +1,82 @@
+import '@servicenow/sdk/global';
+import { AiAgent } from '@servicenow/sdk/core';
+
+// -- Travel Approval Agent
+// 3 inline script tools + 1 RAG tool (wired via Record() M2M in search/travel-policy-pipeline.now.ts)
+AiAgent({
+    $id: Now.ID['travel-approval-agent'],
+    name: 'Corporate Travel Policy Agent',
+    description: 'Corporate travel policy and approval agent with 4 tools: Search Travel Policy (RAG), Create Travel Request (script), Evaluate Travel Request (script), Look Up Travel Request (script). Helps employees submit travel requests, checks them against company travel policy, and routes for the correct level of approval.',
+    agentRole: 'You are the Corporate Travel Policy Agent. You help employees submit travel requests, check them against company travel policy, and route them for the correct level of approval. You are precise about policy rules, helpful with guidance, and you always create the request record before evaluating it.',
+    recordType: 'custom',
+    securityAcl: { $id: Now.ID['travel-agent-acl'], type: 'Public' },
+    public: true,
+    triggerConfig: [],
+    tools: [
+        {
+            name: 'Create Travel Request',
+            type: 'script',
+            recordType: 'custom',
+            script: Now.include('./scripts/create-travel-request.server.js'),
+            inputs: [
+                { name: 'requester_name', description: 'Full name of the employee requesting travel', mandatory: true },
+                { name: 'requester_email', description: 'Email address of the requester', mandatory: true },
+                { name: 'travel_type', description: 'Type of travel: domestic or international', mandatory: true },
+                { name: 'destination', description: 'Travel destination city and country', mandatory: true },
+                { name: 'departure_date', description: 'Departure date in YYYY-MM-DD format', mandatory: true },
+                { name: 'return_date', description: 'Return date in YYYY-MM-DD format', mandatory: true },
+                { name: 'business_purpose', description: 'Business justification for the travel', mandatory: true },
+                { name: 'estimated_airfare', description: 'Estimated airfare cost in dollars', mandatory: false },
+                { name: 'flight_class_requested', description: 'Flight class: economy, premium_economy, or business', mandatory: false },
+                { name: 'estimated_flight_hours', description: 'Estimated flight duration in hours', mandatory: false },
+                { name: 'estimated_accommodation_per_night', description: 'Estimated hotel cost per night in dollars', mandatory: false },
+                { name: 'estimated_accommodation_nights', description: 'Number of nights accommodation needed', mandatory: false },
+                { name: 'ground_transport_type', description: 'Ground transport type: rental_car, rideshare, public_transport, or personal_vehicle', mandatory: false },
+                { name: 'estimated_ground_transport', description: 'Estimated ground transport cost in dollars', mandatory: false },
+                { name: 'estimated_meals_total', description: 'Estimated total meals cost in dollars', mandatory: false },
+                { name: 'client_entertainment_required', description: 'Whether client entertainment is needed: true or false', mandatory: false },
+                { name: 'estimated_entertainment', description: 'Estimated client entertainment cost in dollars', mandatory: false },
+            ],
+            description: 'STEP 3. Creates a new travel request record with auto-generated request number and cost calculation. Returns the request number, sys_id, total estimated cost, and confirmation message. All cost fields are summed to compute total_estimated_cost. Status is set to pending_review.',
+            displayOutput: true,
+            executionMode: 'autopilot',
+            maxAutoExecutions: 10,
+            outputTransformationStrategy: 'custom',
+        },
+        {
+            name: 'Evaluate Travel Request',
+            type: 'script',
+            recordType: 'custom',
+            script: Now.include('./scripts/evaluate-travel-request.server.js'),
+            inputs: [
+                { name: 'request_number', description: 'The travel request number to evaluate (e.g. TR0001)', mandatory: true },
+            ],
+            description: 'STEP 4. Evaluates a travel request against all approval rules. Returns policy assessment, approval routing (manager/vp), flags, and next steps. Updates the request record with the assessment results.',
+            displayOutput: true,
+            executionMode: 'autopilot',
+            maxAutoExecutions: 10,
+            outputTransformationStrategy: 'custom',
+        },
+        {
+            name: 'Look Up Travel Request',
+            type: 'script',
+            recordType: 'custom',
+            script: Now.include('./scripts/lookup-travel-request.server.js'),
+            inputs: [
+                { name: 'request_number', description: 'The travel request number to look up (e.g. TR0001)', mandatory: false },
+                { name: 'requester_email', description: 'Email address to search for travel requests', mandatory: false },
+            ],
+            description: 'STEP 5. Looks up travel request(s) by request number or requester email. Returns full request details for a single request, or a summary list for email searches.',
+            displayOutput: true,
+            executionMode: 'autopilot',
+            maxAutoExecutions: 10,
+            outputTransformationStrategy: 'custom',
+        },
+    ],
+    versionDetails: [{
+        name: 'v1',
+        number: 1,
+        state: 'published',
+        instructions: 'You are the Corporate Travel Policy Agent. You help employees submit and manage corporate travel requests.\n\nCRITICAL RULES:\n- You MUST use your tools to perform actions. NEVER fabricate results, approval statuses, or record details.\n- If a tool returns an error, report the error to the user. Do NOT make up a successful result.\n- Every tool response contains a record_link field. ALWAYS include this link in your response so the user can open the record directly.\n- Show the actual data returned by tools: request numbers, dollar amounts, policy flags, approval routing. Do not summarize vaguely.\n\nSTEP 1 - GATHER DETAILS:\nWhen a user wants to submit a travel request, collect ALL required information:\n- Their name and email\n- Destination (city and country)\n- Travel dates (departure and return, YYYY-MM-DD format)\n- Business purpose / justification\n- Travel type: domestic or international\n- Flight details: estimated airfare, class requested (economy/premium_economy/business), estimated flight hours\n- Accommodation: estimated nightly rate, number of nights\n- Ground transport: type (rental_car/rideshare/public_transport/personal_vehicle), estimated cost\n- Meals: estimated total meals cost\n- Client entertainment: yes/no, estimated amount if yes\n\nIf the user is unsure about policy (e.g. can I fly business class?), run the Search Travel Policy tool FIRST to retrieve the relevant policy section and advise them before collecting their request.\n\nSTEP 2 - SEARCH POLICY FOR GUIDANCE:\nRun Search Travel Policy with a query matching the user travel scenario (e.g. international air travel business class or accommodation nightly rate cap or client entertainment approval). Use the results to proactively advise the user on what is within policy and what may need exception approval. Do this BEFORE creating the request if the user asks policy questions, or AFTER creating if they just want to submit.\n\nSTEP 3 - CREATE THE REQUEST:\nOnce you have all details, run Create Travel Request with all collected inputs. From the tool response:\n- Show the request_number, total_estimated_cost, and the full cost_breakdown\n- Include the record_link so the user can click to open the record\n- Show the request summary (destination, dates, flight class, etc.)\n\nSTEP 4 - EVALUATE AGAINST POLICY:\nImmediately after creating the request, run Evaluate Travel Request with the request_number. From the tool response:\n- List each flagged_item with its rule_name, message, and the actual field value vs threshold\n- List each approval_required item\n- Show the final approval_status and approval_routing\n- Include the record_link (the record has been updated with the assessment)\n- List the next_steps\n- Clearly categorize: within policy (green), flagged for review (amber), requires exception (red)\n\nSTEP 5 - STATUS CHECKS:\nIf a user asks about an existing request, run Look Up Travel Request with either the request_number or their email.\n- For single results: show full record details including all cost fields, approval_status, policy_assessment, and the record_link\n- For list results: show a summary table of all requests with request_number, destination, dates, cost, status, and individual record_links\n\nALWAYS be specific about dollar amounts, policy thresholds, and approval requirements. Never guess - search the policy if you are unsure. When flagging issues, explain what the policy says and what the user options are (e.g. You could switch to premium economy which is auto-approved for flights over 6 hours, or keep business class which requires VP approval).',
+    }],
+});

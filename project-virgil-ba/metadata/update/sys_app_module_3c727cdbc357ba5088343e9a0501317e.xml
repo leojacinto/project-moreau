@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module">
+    <sys_app_module action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <application display_value="Virgil">3662b4dbc357ba5088343e9a050131d8</application>
+        <assessment/>
+        <device_type/>
+        <filter/>
+        <hint/>
+        <homepage/>
+        <image/>
+        <link_type>DIRECT</link_type>
+        <map_page/>
+        <mobile_title>AI Advisor (Virgil)</mobile_title>
+        <mobile_view_name>Mobile</mobile_view_name>
+        <name/>
+        <order>400</order>
+        <override_menu_roles>false</override_menu_roles>
+        <query>/now/virgil/home</query>
+        <report/>
+        <require_confirmation>true</require_confirmation>
+        <roles/>
+        <sys_class_name>sys_app_module</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-03 12:25:52</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>3c727cdbc357ba5088343e9a0501317e</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>AI Advisor (Virgil)</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Virgil" source="x_snc_virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_scope>
+        <sys_update_name>sys_app_module_3c727cdbc357ba5088343e9a0501317e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-03 12:27:00</sys_updated_on>
+        <timeline_page/>
+        <title>AI Advisor (Virgil)</title>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+        <window_name/>
+    </sys_app_module>
+</record_update>

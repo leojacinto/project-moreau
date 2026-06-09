@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="par_dashboard_tab">
+    <par_dashboard_tab action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <background_color/>
+        <dashboard display_value="Virgil">986f205b3bdff6505c1f2d11a3e45a19</dashboard>
+        <name>Minos</name>
+        <order>1</order>
+        <sys_class_name>par_dashboard_tab</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-03 12:50:13</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>e908fc9b3b933a505c1f2d11a3e45aa1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Minos</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Virgil" source="x_snc_virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_scope>
+        <sys_update_name>par_dashboard_tab_e908fc9b3b933a505c1f2d11a3e45aa1</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-03 12:50:13</sys_updated_on>
+    </par_dashboard_tab>
+</record_update>

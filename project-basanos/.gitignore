@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Real ServiceNow instance data (personal, never committed)
+domains/servicenow-live/
+
+# Local constraint overrides (operator promotions/demotions)
+constraint-overrides.json
+
+# MCP OAuth tokens (sensitive, never committed)
+.basanos/
+**/servicenow-tokens.json
+**/servicenow-mcp-token.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Coverage
+coverage/
+
+# TypeScript cache
+*.tsbuildinfo

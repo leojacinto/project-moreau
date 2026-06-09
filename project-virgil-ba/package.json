@@ -1,0 +1,23 @@
+{
+    "name": "x-snc-virgil",
+    "version": "1.0.0",
+    "description": "Architecture Guidance",
+    "license": "UNLICENSED",
+    "scripts": {
+        "build": "now-sdk build",
+        "deploy": "now-sdk install",
+        "transform": "now-sdk transform",
+        "types": "now-sdk dependencies"
+    },
+    "dependencies": {
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "lucide-react": "0.263.1"
+    },
+    "devDependencies": {
+        "@servicenow/sdk": "4.3.0",
+        "@servicenow/glide": "26.0.1",
+        "eslint": "8.50.0",
+        "@servicenow/eslint-plugin-sdk-app-plugin": "4.3.0"
+    }
+}

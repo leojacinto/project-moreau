@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_event">
+    <sys_ux_event action="INSERT_OR_UPDATE">
+        <description/>
+        <event_name>SAVE_USER_PREFERENCE_1_EXECUTE_RELAY_c15fe01bb0dff65084e779eca886e9e3</event_name>
+        <explicit_api_name/>
+        <interfaces/>
+        <label>Save User Preference 1 EXECUTE Relay (Home)</label>
+        <props>[
+    {
+        "description": "User preference name",
+        "fieldType": "string",
+        "label": "Name",
+        "mandatory": true,
+        "name": "name",
+        "readOnly": false,
+        "type": "string",
+        "valueType": "string"
+    },
+    {
+        "description": "User preference value",
+        "fieldType": "boolean",
+        "label": "Value",
+        "mandatory": true,
+        "name": "value",
+        "readOnly": false,
+        "type": "boolean",
+        "valueType": "boolean"
+    }
+]</props>
+        <required_translations/>
+        <schema_version>1.0.0</schema_version>
+        <sys_class_name>sys_ux_event</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-03 13:33:01</sys_created_on>
+        <sys_id>38e9701b3bd33a505c1f2d11a3e45aee</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Save User Preference 1 EXECUTE Relay (Home)</sys_name>
+        <sys_package display_value="Virgil" source="x_snc_virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_scope>
+        <sys_update_name>sys_ux_event_38e9701b3bd33a505c1f2d11a3e45aee</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-03 13:33:01</sys_updated_on>
+    </sys_ux_event>
+    <sys_translated_text action="delete_multiple" query="documentkey=38e9701b3bd33a505c1f2d11a3e45aee"/>
+</record_update>

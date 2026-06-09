@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="c0717493c357ba5088343e9a05013138" label="Minos Scan" max_length="40" name="x_snc_virgil_minos_scan" type="collection">
+        <element label="Total Findings" max_length="255" name="total_findings" type="integer"/>
+        <element label="Active Nodes" max_length="255" name="active_nodes" type="integer"/>
+        <element label="Duration (seconds)" max_length="255" name="duration_seconds" type="decimal"/>
+        <element label="Instance Model (JSON)" max_length="16000" name="instance_model" type="string"/>
+        <element label="Instance URL" max_length="200" name="instance_url" type="string"/>
+        <element label="Plugins Scanned" max_length="255" name="plugins_scanned" type="integer"/>
+        <element label="Status" max_length="20" name="status" type="string"/>
+        <element label="Tables Scanned" max_length="255" name="tables_scanned" type="integer"/>
+        <element label="Active Node IDs (JSON)" max_length="4000" name="active_node_ids" type="string"/>
+        <element label="Recommended Additions" max_length="255" name="recommended_additions" type="integer"/>
+        <element label="IT4IT Coverage (JSON)" max_length="8000" name="it4it_coverage" type="string"/>
+        <element label="Recommended Diagram (Mermaid)" max_length="16000" name="recommended_diagram" type="string"/>
+        <element label="As-Is Diagram (Mermaid)" max_length="16000" name="as_is_diagram" type="string"/>
+        <element label="Scan Date" max_length="255" name="scan_date" type="glide_date_time"/>
+    </element>
+</database>

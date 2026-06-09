@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_snc_student_ma_2.StudentOracleSync</api_name>
+        <caller_access>1</caller_access>
+        <client_callable>true</client_callable>
+        <description>Script Include to sync student data with UoW Oracle Simulation spoke using Get All Students action</description>
+        <mobile_callable>false</mobile_callable>
+        <name>StudentOracleSync</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var StudentOracleSync = Class.create();
+StudentOracleSync.prototype = Object.extendsObject(AbstractAjaxProcessor, {
+    
+    getAllStudents: function() {
+        // ABSOLUTE MINIMAL TEST - just return immediately
+        this.setAnswer('{"success":true,"message":"Script include is executing","timestamp":"' + new GlideDateTime().getDisplayValue() + '"}');
+    },
+    
+    syncStudentData: function() {
+        this.setAnswer('{"success":false,"message":"Sync method responding"}');
+    },
+    
+    testSpokeConnection: function() {
+        this.setAnswer('{"success":true,"message":"testSpokeConnection method responding","timestamp":"' + new GlideDateTime().getDisplayValue() + '"}');
+    },
+
+    type: 'StudentOracleSync'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-12 07:44:57</sys_created_on>
+        <sys_id>c11ff096526045129655714799f7d5d4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>StudentOracleSync</sys_name>
+        <sys_package display_value="Student Ma 2" source="x_snc_student_ma_2">9803002747c1be103674de79116d436d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Student Ma 2">9803002747c1be103674de79116d436d</sys_scope>
+        <sys_update_name>sys_script_include_c11ff096526045129655714799f7d5d4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-12 07:44:57</sys_updated_on>
+    </sys_script_include>
+</record_update>

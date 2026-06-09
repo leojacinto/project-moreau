@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_registry_m2m_category">
+    <sys_ux_registry_m2m_category action="DELETE">
+        <experience_category display_value="Workspace">afb4e3e173322010f0ca1e666bf6a726</experience_category>
+        <order/>
+        <page_registry display_value="">455f241baadff650d4b79a1ba69ecd01</page_registry>
+        <sys_class_name>sys_ux_registry_m2m_category</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-03 12:12:17</sys_created_on>
+        <sys_id>415fe01b00dff65015f98dc4534e6bc6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Virgil" source="x_snc_virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_scope>
+        <sys_update_name>sys_ux_registry_m2m_category_415fe01b00dff65015f98dc4534e6bc6</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-03 12:12:17</sys_updated_on>
+    </sys_ux_registry_m2m_category>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Virgil">232fa0973bdff6505c1f2d11a3e45a49</application>
+        <file_path/>
+        <instance_id>5e7c18142baa6a50e2e6fcd2ce91bfd9</instance_id>
+        <instance_name>demoalectriallwf118028</instance_name>
+        <name>sys_ux_registry_m2m_category_415fe01b00dff65015f98dc4534e6bc6</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_registry_m2m_category"><sys_ux_registry_m2m_category action="INSERT_OR_UPDATE"><experience_category display_value="Workspace">afb4e3e173322010f0ca1e666bf6a726</experience_category><order/><page_registry display_value="">455f241baadff650d4b79a1ba69ecd01</page_registry><sys_class_name>sys_ux_registry_m2m_category</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-03-03 12:12:17</sys_created_on><sys_id>415fe01b00dff65015f98dc4534e6bc6</sys_id><sys_mod_count>0</sys_mod_count><sys_name/><sys_package display_value="Virgil" source="x_snc_virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_package><sys_policy/><sys_scope display_value="Virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_scope><sys_update_name>sys_ux_registry_m2m_category_415fe01b00dff65015f98dc4534e6bc6</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-03-03 12:12:17</sys_updated_on></sys_ux_registry_m2m_category></record_update>]]></payload>
+        <payload_hash>1323985416</payload_hash>
+        <record_name/>
+        <reverted_from/>
+        <source>25d7d960c332321088343e9a0501310e</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by/>
+        <sys_created_on>2026-01-29 05:34:32</sys_created_on>
+        <sys_id>4fd30d573b1b3a505c1f2d11a3e45a84</sys_id>
+        <sys_mod_count/>
+        <sys_recorded_at>19c083efe400000000</sys_recorded_at>
+        <sys_updated_by/>
+        <sys_updated_on/>
+        <type>UX Application Category M2M</type>
+        <update_guid>0fd30d57ca1b3a50daddb66d27794084</update_guid>
+        <update_guid_history>0fd30d57ca1b3a50daddb66d27794084:1323985416</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-03 13:41:56</sys_created_on>
+        <sys_db_object display_value="" name="sys_ux_registry_m2m_category">sys_ux_registry_m2m_category</sys_db_object>
+        <sys_id>71ae25bfb7454a34bb125e2a1d16a890</sys_id>
+        <sys_metadata>415fe01b00dff65015f98dc4534e6bc6</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Virgil" source="x_snc_virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_scope>
+        <sys_scope_delete display_value="">036c974ddbaa4ec680caa7e427fad4c1</sys_scope_delete>
+        <sys_update_name>sys_ux_registry_m2m_category_415fe01b00dff65015f98dc4534e6bc6</sys_update_name>
+        <sys_update_version display_value="sys_ux_registry_m2m_category_415fe01b00dff65015f98dc4534e6bc6">4fd30d573b1b3a505c1f2d11a3e45a84</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-03 13:41:56</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="ais_search_profile">
+    <ais_search_profile action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <creator_source/>
+        <description>This is default AI Search profile for Virgil</description>
+        <exclude_from_evaluation>false</exclude_from_evaluation>
+        <genius_result_assembly/>
+        <label>virgil Search Profile</label>
+        <name>x_snc_virgil_pbxalazg_search_profile</name>
+        <publish_id>4870eba2-6332-4da8-acb2-7d48b7534b7f</publish_id>
+        <qna_model_id/>
+        <state>PUBLISHED</state>
+        <sys_class_name>ais_search_profile</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-03 12:12:15</sys_created_on>
+        <sys_id>415f241b60dff650cd10e9d3d605e001</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>virgil Search Profile</sys_name>
+        <sys_package display_value="Virgil" source="x_snc_virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_scope>
+        <sys_update_name>ais_search_profile_415f241b60dff650cd10e9d3d605e001</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-03 12:12:24</sys_updated_on>
+    </ais_search_profile>
+</record_update>

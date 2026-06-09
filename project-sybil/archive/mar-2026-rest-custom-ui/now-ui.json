@@ -1,0 +1,34 @@
+{
+  "components": {
+    "x-snc-travel-request-app": {
+      "innerComponents": [],
+      "uiBuilder": {
+        "associatedTypes": ["global.core", "global.landing-page"],
+        "label": "Travel Request App",
+        "icon": "airplane-outline",
+        "description": "A travel request management application built with pure SDK UI components",
+        "category": "primitives"
+      },
+      "properties": [
+        {
+          "name": "instanceUrl",
+          "label": "Instance URL",
+          "fieldType": "string",
+          "defaultValue": "",
+          "description": "ServiceNow instance URL"
+        }
+      ],
+      "actions": [
+        {
+          "name": "TRAVEL_REQUEST_SUBMITTED",
+          "label": "Travel request submitted"
+        },
+        {
+          "name": "TRAVEL_REQUEST_APPROVED",
+          "label": "Travel request approved"
+        }
+      ]
+    }
+  },
+  "scopeName": "x_snc_travel_req"
+}

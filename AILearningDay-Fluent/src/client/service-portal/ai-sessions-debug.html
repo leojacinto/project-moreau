@@ -1,0 +1,38 @@
+<!-- Simple Debug Template for AI Sessions Widget -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">AI Learning Day Sessions - Debug</h3>
+  </div>
+  
+  <div class="panel-body">
+    <!-- Debug information -->
+    <div class="alert alert-info">
+      <strong>Debug:</strong> {{data.debug}}
+    </div>
+    
+    <div ng-show="data.error" class="alert alert-danger">
+      <strong>Error:</strong> {{data.error}}
+    </div>
+    
+    <div class="alert alert-success">
+      <strong>Sessions found:</strong> {{data.sessionCount || 0}}
+    </div>
+    
+    <!-- Simple session list -->
+    <div ng-show="data.sessions.length > 0">
+      <h4>Sessions:</h4>
+      <ul class="list-group">
+        <li ng-repeat="session in data.sessions" class="list-group-item">
+          <h5>{{session.title.display_value || session.title.value || 'No Title'}}</h5>
+          <p><strong>Type:</strong> {{session.session_type.display_value || session.session_type.value}}</p>
+          <p><strong>Geography:</strong> {{session.geo_major_area.display_value || session.geo_major_area.value}}</p>
+          <p><strong>Time:</strong> {{session.start_time.display_value || session.start_time.value}}</p>
+        </li>
+      </ul>
+    </div>
+    
+    <div ng-show="data.sessions.length === 0 && !data.error" class="alert alert-warning">
+      No sessions found in database.
+    </div>
+  </div>
+</div>

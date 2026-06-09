@@ -1,0 +1,12 @@
+{
+    "files": [],
+    "exclude": ["generated/**"],
+    "references": [
+        {
+            "path": "./tsconfig.server.json"
+        },
+        {
+            "path": "./tsconfig.client.json"
+        }
+    ]
+}

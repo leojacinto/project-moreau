@@ -1,0 +1,25 @@
+{
+  "name": "travel-request-sdk-pure",
+  "version": "1.0.0",
+  "description": "Travel Request App - Approach 1: Pure SDK UI using @servicenow/sdk",
+  "private": true,
+  "scripts": {
+    "dev": "snc ui-component develop",
+    "build": "snc ui-component build",
+    "deploy": "snc ui-component deploy",
+    "test": "snc ui-component test"
+  },
+  "devDependencies": {
+    "@servicenow/sdk": "4.4.0",
+    "@servicenow/cli": "29.0.2"
+  },
+  "dependencies": {
+    "@servicenow/ui-core": "24.1.1",
+    "@servicenow/ui-renderer-snabbdom": "24.1.1",
+    "@servicenow/ui-effect-http": "24.1.1"
+  },
+  "snc": {
+    "instanceUrl": "https://YOUR_INSTANCE.service-now.com",
+    "scope": "x_snc_travel_req"
+  }
+}

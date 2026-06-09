@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Learning Day Agenda Builder</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background-color: #f5f5f5; 
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+        }
+        h1 { 
+            text-align: center; 
+            color: #333; 
+            margin-bottom: 30px; 
+        }
+        .filter-panel {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .filter-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        select, input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .session-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: white;
+        }
+        .session-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .session-details {
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .session-description {
+            color: #444;
+            margin-top: 10px;
+        }
+        .no-sessions {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 40px;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+        }
+        .error {
+            color: #d32f2f;
+            background: #ffebee;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI Learning Day Agenda Builder</h1>
+        
+        <div class="filter-panel">
+            <h3>Filter Sessions</h3>
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label>Session Type:</label>
+                    <select id="sessionType">
+                        <option value="">All Types</option>
+                        <option value="keynote">Keynote</option>
+                        <option value="technical">Technical Session</option>
+                        <option value="workshop">Workshop</option>
+                        <option value="demo">Demo</option>
+                        <option value="panel">Panel Discussion</option>
+                        <option value="networking">Networking</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Target Roles:</label>
+                    <select id="targetRole">
+                        <option value="">All Roles</option>
+                        <option value="developer">Developer</option>
+                        <option value="admin">Admin</option>
+                        <option value="architect">Architect</option>
+                        <option value="consultant">Consultant</option>
+                        <option value="manager">Manager</option>
+                        <option value="sales">Sales</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Geo/Major Area:</label>
+                    <select id="geoArea">
+                        <option value="">All Areas</option>
+                        <option value="apac">APAC</option>
+                        <option value="americas">Americas</option>
+                        <option value="emea">EMEA</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Search:</label>
+                    <input type="text" id="search" placeholder="Search sessions...">
+                </div>
+            </div>
+        </div>
+
+        <div id="loading" class="loading">Loading sessions...</div>
+        <div id="error" class="error" style="display: none;"></div>
+        <div id="sessions-container"></div>
+    </div>
+
+    <script>
+        let allSessions = [];
+        
+        // Load sessions on page load
+        document.addEventListener('DOMContentLoaded', loadSessions);
+        
+        // Add event listeners for filters
+        document.getElementById('sessionType').addEventListener('change', applyFilters);
+        document.getElementById('targetRole').addEventListener('change', applyFilters);
+        document.getElementById('geoArea').addEventListener('change', applyFilters);
+        document.getElementById('search').addEventListener('input', applyFilters);
+        
+        function loadSessions() {
+            // For demo purposes, using sample data
+            // In a real implementation, this would call your REST API
+            allSessions = [
+                {
+                    title: 'AI Integration Best Practices',
+                    session_type: 'technical',
+                    presenter: 'John Smith',
+                    start_time: '2024-04-10 09:00:00',
+                    end_time: '2024-04-10 10:00:00',
+                    target_roles: 'developer,architect',
+                    geo_major_area: 'apac',
+                    room_location: 'Conference Room A',
+                    description: 'Learn how to integrate AI capabilities into your ServiceNow applications.'
+                },
+                {
+                    title: 'ServiceNow AI Strategy Keynote',
+                    session_type: 'keynote',
+                    presenter: 'Jane Doe',
+                    start_time: '2024-04-10 10:30:00',
+                    end_time: '2024-04-10 11:30:00',
+                    target_roles: 'manager,sales',
+                    geo_major_area: 'apac',
+                    room_location: 'Main Auditorium',
+                    description: 'Strategic overview of AI initiatives and roadmap for the coming year.'
+                },
+                {
+                    title: 'Hands-on AI Workshop',
+                    session_type: 'workshop',
+                    presenter: 'Tech Team',
+                    start_time: '2024-04-10 14:00:00',
+                    end_time: '2024-04-10 16:00:00',
+                    target_roles: 'developer,admin',
+                    geo_major_area: 'apac',
+                    room_location: 'Lab 1',
+                    description: 'Interactive workshop building AI-powered workflows.'
+                }
+            ];
+            
+            document.getElementById('loading').style.display = 'none';
+            displaySessions(allSessions);
+        }
+        
+        function applyFilters() {
+            const sessionType = document.getElementById('sessionType').value;
+            const targetRole = document.getElementById('targetRole').value;
+            const geoArea = document.getElementById('geoArea').value;
+            const search = document.getElementById('search').value.toLowerCase();
+            
+            const filtered = allSessions.filter(session => {
+                const matchesType = !sessionType || session.session_type === sessionType;
+                const matchesRole = !targetRole || session.target_roles.includes(targetRole);
+                const matchesGeo = !geoArea || session.geo_major_area === geoArea;
+                const matchesSearch = !search || 
+                    session.title.toLowerCase().includes(search) ||
+                    session.description.toLowerCase().includes(search) ||
+                    session.presenter.toLowerCase().includes(search);
+                
+                return matchesType && matchesRole && matchesGeo && matchesSearch;
+            });
+            
+            displaySessions(filtered);
+        }
+        
+        function displaySessions(sessions) {
+            const container = document.getElementById('sessions-container');
+            
+            if (sessions.length === 0) {
+                container.innerHTML = '<div class="no-sessions">No sessions found matching your criteria.</div>';
+                return;
+            }
+            
+            container.innerHTML = sessions.map(session => `
+                <div class="session-card">
+                    <div class="session-title">${session.title}</div>
+                    <div class="session-details"><strong>Time:</strong> ${formatTime(session.start_time)} - ${formatTime(session.end_time)}</div>
+                    <div class="session-details"><strong>Type:</strong> ${capitalizeFirst(session.session_type)}</div>
+                    <div class="session-details"><strong>Presenter:</strong> ${session.presenter}</div>
+                    <div class="session-details"><strong>Target Roles:</strong> ${session.target_roles.split(',').map(capitalizeFirst).join(', ')}</div>
+                    <div class="session-details"><strong>Geo/Area:</strong> ${session.geo_major_area.toUpperCase()}</div>
+                    <div class="session-details"><strong>Location:</strong> ${session.room_location}</div>
+                    <div class="session-description">${session.description}</div>
+                </div>
+            `).join('');
+        }
+        
+        function formatTime(timeString) {
+            const date = new Date(timeString);
+            return date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+        }
+        
+        function capitalizeFirst(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+    </script>
+</body>
+</html>

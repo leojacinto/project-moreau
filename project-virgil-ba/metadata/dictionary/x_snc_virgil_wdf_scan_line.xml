@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="68b1b4d73b133a505c1f2d11a3e45a86" label="WDF Scan Line" max_length="40" name="x_snc_virgil_wdf_scan_line" type="collection">
+        <element label="Capability Label" max_length="200" name="cap_label" type="string"/>
+        <element label="Capability" max_length="32" name="capability" reference="x_snc_virgil_wdf_rate_card" type="reference"/>
+        <element label="Estimated" max_length="255" name="is_estimated" type="boolean"/>
+        <element label="Scan" mandatory="true" max_length="32" name="scan" reference="x_snc_virgil_wdf_scan" type="reference"/>
+        <element label="Excluded" max_length="255" name="excluded" type="boolean"/>
+        <element label="Detected" max_length="255" name="detected" type="boolean"/>
+        <element label="Annualized Usage" max_length="255" name="annualized_usage" type="decimal"/>
+        <element label="Usage Value" max_length="255" name="usage_value" type="decimal"/>
+        <element label="Capability ID" max_length="40" name="cap_id" type="string"/>
+        <element label="Usage Unit" max_length="100" name="usage_unit" type="string"/>
+        <element label="Credits Consumed" max_length="255" name="credits_consumed" type="decimal"/>
+        <element label="Scan Evidence" max_length="4000" name="scan_evidence" type="string"/>
+        <index name="index">
+            <element name="capability"/>
+        </index>
+        <index name="index2">
+            <element name="scan"/>
+        </index>
+    </element>
+</database>

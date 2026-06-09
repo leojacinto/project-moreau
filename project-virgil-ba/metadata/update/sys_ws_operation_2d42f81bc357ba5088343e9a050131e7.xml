@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl/>
+        <http_method>GET</http_method>
+        <name>Minos Scan History</name>
+        <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+    var limit = parseInt(request.queryParams.limit) || 10;
+    var scans = [];
+
+    var gr = new GlideRecord('x_snc_virgil_minos_scan');
+    gr.orderByDesc('scan_date');
+    gr.setLimit(limit);
+    gr.query();
+    while (gr.next()) {
+        scans.push({
+            sys_id: gr.getUniqueValue(),
+            scan_date: gr.getValue('scan_date'),
+            status: gr.getValue('status'),
+            plugins_scanned: parseInt(gr.getValue('plugins_scanned')) || 0,
+            tables_scanned: parseInt(gr.getValue('tables_scanned')) || 0,
+            active_nodes: parseInt(gr.getValue('active_nodes')) || 0,
+            total_findings: parseInt(gr.getValue('total_findings')) || 0,
+            recommended_additions: parseInt(gr.getValue('recommended_additions')) || 0
+        });
+    }
+
+    response.setStatus(200);
+    response.setBody({ scans: scans });
+})(request, response);
+]]></operation_script>
+        <operation_uri>/api/x_snc_virgil/virgil_api/minos/scans</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/minos/scans</relative_path>
+        <request_example/>
+        <requires_acl_authorization>false</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>true</requires_snc_internal_role>
+        <short_description>Retrieve past Minos scan results</short_description>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-03 12:25:07</sys_created_on>
+        <sys_id>2d42f81bc357ba5088343e9a050131e7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Minos Scan History</sys_name>
+        <sys_package display_value="Virgil" source="x_snc_virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_scope>
+        <sys_update_name>sys_ws_operation_2d42f81bc357ba5088343e9a050131e7</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-03 12:25:07</sys_updated_on>
+        <web_service_definition display_value="Virgil API">4732349b3b133a505c1f2d11a3e45a18</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>

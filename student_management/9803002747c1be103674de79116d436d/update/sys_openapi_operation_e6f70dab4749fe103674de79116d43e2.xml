@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_openapi_operation">
+    <sys_openapi_operation action="INSERT_OR_UPDATE">
+        <complex_object_ids/>
+        <deprecated>false</deprecated>
+        <http_method>get</http_method>
+        <name>get student data</name>
+        <openapi display_value="x_snc_student_ma_2 GEN AI Generated">2ef70dab4749fe103674de79116d4374</openapi>
+        <path>/api/students</path>
+        <serialized_operation>{"fName":"get student data","fOperationId":"operation_getstudentdata","fDescription":"get student data","fPath":"/api/students","fHttpMethod":"GET","fDeprecated":false,"fResponses":[],"fParameters":[],"fTags":[""]}</serialized_operation>
+        <sys_class_name>sys_openapi_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-12 12:17:08</sys_created_on>
+        <sys_id>e6f70dab4749fe103674de79116d43e2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>get student data</sys_name>
+        <sys_package display_value="Student Ma 2" source="x_snc_student_ma_2">9803002747c1be103674de79116d436d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Student Ma 2">9803002747c1be103674de79116d436d</sys_scope>
+        <sys_update_name>sys_openapi_operation_e6f70dab4749fe103674de79116d43e2</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-12 12:17:08</sys_updated_on>
+    </sys_openapi_operation>
+</record_update>

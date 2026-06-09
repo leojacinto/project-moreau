@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_ribbon_config">
+    <sys_ux_ribbon_config action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description>Virgil Ribbon Config</description>
+        <name>Virgil Ribbon Config</name>
+        <sys_class_name>sys_ux_ribbon_config</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-03 12:12:16</sys_created_on>
+        <sys_id>c55fe01b67dff65096a873baaadb4de1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Virgil Ribbon Config</sys_name>
+        <sys_package display_value="Virgil" source="x_snc_virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_scope>
+        <sys_update_name>sys_ux_ribbon_config_c55fe01b67dff65096a873baaadb4de1</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-03 12:12:16</sys_updated_on>
+    </sys_ux_ribbon_config>
+</record_update>

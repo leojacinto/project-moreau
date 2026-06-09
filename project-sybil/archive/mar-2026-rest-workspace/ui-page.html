@@ -1,0 +1,48 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Travel Requests - Build Agent</title>
+<style>
+:root{--bg:#0f172a;--card:#1e293b;--border:#334155;--pri:#3b82f6;--ok:#22c55e;--no:#ef4444;--pur:#a855f7;--txt:#e2e8f0;--m:#94a3b8}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--txt)}
+.h{background:linear-gradient(135deg,#92400e,#0f172a);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}.h h1{font-size:1.4rem}.bg{color:#fff;font-size:.6rem;font-weight:700;padding:2px 8px;border-radius:12px;background:#f59e0b;margin-left:8px}
+.c{max-width:1200px;margin:0 auto;padding:1.5rem}
+.st{display:grid;grid-template-columns:repeat(6,1fr);gap:.8rem;margin-bottom:1.5rem}.si{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.8rem;text-align:center}.si .n{font-size:1.8rem;font-weight:700}.si .l{font-size:.7rem;color:var(--m)}
+.tb{display:flex;gap:.8rem;margin-bottom:1rem;flex-wrap:wrap}.tb input,.tb select{background:var(--card);border:1px solid var(--border);color:var(--txt);padding:.4rem .8rem;border-radius:6px;font-size:.85rem}.tb input{flex:1;min-width:180px}
+.b{padding:.4rem 1rem;border-radius:6px;border:none;cursor:pointer;font-weight:600;font-size:.85rem}.bp{background:var(--pri);color:#fff}.bs{background:var(--ok);color:#fff}.bd{background:var(--no);color:#fff}.bg2{background:var(--border);color:var(--txt)}.bsm{padding:.2rem .6rem;font-size:.75rem}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:10px;overflow:hidden;border:1px solid var(--border)}th,td{padding:.6rem .8rem;text-align:left;border-bottom:1px solid var(--border)}th{background:#0f172a;color:var(--m);font-size:.75rem;text-transform:uppercase}tr:hover{background:rgba(59,130,246,.05)}
+.sb{padding:2px 8px;border-radius:10px;font-size:.7rem;font-weight:600;color:#fff}
+.mo{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:100}.md{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;width:90%;max-width:550px}
+.fg{margin-bottom:.8rem}.fg label{display:block;margin-bottom:.2rem;color:var(--m);font-size:.8rem}.fg input,.fg textarea,.fg select{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--txt);padding:.5rem;border-radius:6px;font-size:.85rem;font-family:inherit}.fg textarea{min-height:60px}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}.fa{display:flex;gap:.6rem;justify-content:flex-end;margin-top:1rem}
+.em{text-align:center;padding:2rem;color:var(--m)}.al{padding:.5rem .8rem;margin-bottom:1rem;border-radius:6px;font-size:.85rem;background:rgba(245,158,11,.1);border:1px solid #f59e0b;color:#fcd34d}
+</style></head><body>
+<div class="h"><div style="display:flex;align-items:center;gap:.5rem"><span style="font-size:1.3rem">✈️</span><h1>Travel Requests</h1><span class="bg">BUILD AGENT</span></div><button class="b bp" onclick="showF()">+ New Request</button></div>
+<div class="c"><div class="al"><b>Approach 2: Build Agent</b> — Schema-driven UI. All fields, states, actions, validation defined in JSON config. Zero hand-coded logic.</div><div id="st" class="st"></div><div class="tb"><input id="q" placeholder="Search..." oninput="R()"><select id="fl" onchange="R()"><option value="">All</option><option value="draft">Draft</option><option value="submitted">Submitted</option><option value="approved">Approved</option><option value="rejected">Rejected</option><option value="completed">Completed</option></select><button class="b bg2" onclick="L()">↻</button></div><div id="g"></div></div>
+<div id="mo" class="mo" style="display:none" onclick="if(event.target===this)hideF()"><div class="md"><h2 style="margin-bottom:1rem">✈️ New Travel Request</h2><div id="fe"></div><div class="fg"><label>Destination *</label><input id="fd"></div><div class="fr"><div class="fg"><label>Departure *</label><input id="fp" type="date"></div><div class="fg"><label>Return *</label><input id="fr2" type="date"></div></div><div class="fg"><label>Purpose *</label><textarea id="fu"></textarea></div><div class="fr"><div class="fg"><label>Cost (USD) *</label><input id="fc" type="number" step="0.01"></div><div class="fg"><label>Type</label><select id="ft"><option value="domestic">Domestic</option><option value="international">International</option></select></div></div><div class="fa"><button class="b bg2" onclick="hideF()">Cancel</button><button class="b bp" onclick="save()">Create</button></div></div></div>
+<script>
+/* Schema config — in real Build Agent, this comes from schema.json */
+var SCHEMA={fields:[{name:'destination',label:'Destination'},{name:'departure_date',label:'Departure'},{name:'return_date',label:'Return'},{name:'purpose',label:'Purpose'},{name:'estimated_cost',label:'Cost'},{name:'travel_type',label:'Type'}],states:{draft:{l:'Draft',c:'#475569'},submitted:{l:'Submitted',c:'#3b82f6'},approved:{l:'Approved',c:'#22c55e'},rejected:{l:'Rejected',c:'#ef4444'},completed:{l:'Completed',c:'#a855f7'}},actions:{draft:[{n:'Submit',s:'submitted',c:'bp'},{n:'🗑',s:'_del',c:'bd'}],submitted:[{n:'Approve',s:'approved',c:'bs'},{n:'Reject',s:'rejected',c:'bd'}],approved:[{n:'Complete',s:'completed',c:'bsm',x:'background:#a855f7;color:#fff'}]}};
+var T='x_snc_trv_request',X='x_snc_virgil_',D=[];
+function fk(n){return X+n;}
+function V(r,n){var v=r[fk(n)];return v&&v.display_value?v.display_value:v||'—';}
+function SV(r,n){var v=r[fk(n)];return v&&v.value!==undefined?v.value:v||'';}
+function api(m,u,b){var x=new XMLHttpRequest();x.open(m,u,false);x.setRequestHeader('Accept','application/json');x.setRequestHeader('Content-Type','application/json');if(typeof g_ck!=='undefined')x.setRequestHeader('X-UserToken',g_ck);if(b)x.send(JSON.stringify(b));else x.send();if(x.status>=200&&x.status<300){return x.responseText?JSON.parse(x.responseText):{};}throw new Error(x.status);}
+function L(){try{var r=api('GET','/api/now/table/'+T+'?sysparm_display_value=all&sysparm_limit=100&sysparm_orderby=sys_created_onDESC');D=r.result||[];R();}catch(e){document.getElementById('g').innerHTML='<div class="em">Error: '+e.message+'</div>';}}
+function R(){var q=document.getElementById('q').value.toLowerCase(),f=document.getElementById('fl').value,rows=D;
+if(f)rows=rows.filter(function(r){return SV(r,'state')==f;});
+if(q)rows=rows.filter(function(r){return(V(r,'destination')+V(r,'purpose')).toLowerCase().indexOf(q)>=0;});
+var ct={total:D.length},S=SCHEMA.states;Object.keys(S).forEach(function(k){ct[k]=D.filter(function(r){return SV(r,'state')==k;}).length;});
+document.getElementById('st').innerHTML='<div class="si"><div class="n">'+ct.total+'</div><div class="l">Total</div></div>'+Object.keys(S).map(function(k){return'<div class="si"><div class="n" style="color:'+S[k].c+'">'+ct[k]+'</div><div class="l">'+S[k].l+'</div></div>';}).join('');
+if(!rows.length){document.getElementById('g').innerHTML='<div class="em">No requests</div>';return;}
+document.getElementById('g').innerHTML='<table><thead><tr><th>Number</th><th>Destination</th><th>Dates</th><th>Cost</th><th>State</th><th>Actions</th></tr></thead><tbody>'+rows.map(function(r){var s=SV(r,'state'),sc=S[s]||{l:s,c:'#475569'};return'<tr><td>'+V(r,'number')+'</td><td><b>'+V(r,'destination')+'</b><br><span style="color:var(--m);font-size:.8rem">'+V(r,'purpose').substring(0,50)+'</span></td><td>'+V(r,'departure_date')+' → '+V(r,'return_date')+'</td><td>$'+Number(SV(r,'estimated_cost')||0).toLocaleString()+'</td><td><span class="sb" style="background:'+sc.c+'">'+sc.l+'</span></td><td>'+AB(s,r.sys_id)+'</td></tr>';}).join('')+'</tbody></table>';}
+/* Schema-driven action buttons */
+function AB(s,id){var acts=SCHEMA.actions[s];if(!acts)return'';return acts.map(function(a){var st=a.x?'style="'+a.x+'"':'';if(a.s=='_del')return'<button class="b '+a.c+' bsm" onclick="DD(\''+id+'\')">'+a.n+'</button>';if(a.s=='rejected')return'<button class="b '+a.c+' bsm" onclick="DR(\''+id+'\')">'+a.n+'</button>';return'<button class="b '+a.c+' bsm" '+st+' onclick="DA(\''+id+'\',\''+a.s+'\')">'+a.n+'</button>';}).join(' ');}
+function DA(id,s){var b={};b[fk('state')]=s;api('PATCH','/api/now/table/'+T+'/'+id,b);L();}
+function DD(id){if(!confirm('Delete?'))return;api('DELETE','/api/now/table/'+T+'/'+id);L();}
+function DR(id){var r=prompt('Reason:');if(!r)return;var b={};b[fk('state')]='rejected';api('PATCH','/api/now/table/'+T+'/'+id,b);L();}
+function showF(){document.getElementById('mo').style.display='flex';}function hideF(){document.getElementById('mo').style.display='none';document.getElementById('fe').innerHTML='';}
+function save(){var d=document.getElementById('fd').value,dp=document.getElementById('fp').value,rt=document.getElementById('fr2').value,p=document.getElementById('fu').value,c=document.getElementById('fc').value,t=document.getElementById('ft').value;
+if(!d||!dp||!rt||!p||!c){document.getElementById('fe').innerHTML='<div style="color:#ef4444;margin-bottom:.5rem">All * fields required</div>';return;}
+if(rt<dp){document.getElementById('fe').innerHTML='<div style="color:#ef4444;margin-bottom:.5rem">Return must be after departure</div>';return;}
+var b={};b[fk('destination')]=d;b[fk('departure_date')]=dp;b[fk('return_date')]=rt;b[fk('purpose')]=p;b[fk('estimated_cost')]=c;b[fk('travel_type')]=t;b[fk('state')]='draft';b[fk('number')]='TRV'+String(Date.now()).slice(-4);
+api('POST','/api/now/table/'+T,b);hideF();L();}
+L();
+</script></body></html>

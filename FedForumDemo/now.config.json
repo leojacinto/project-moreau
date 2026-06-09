@@ -1,0 +1,12 @@
+{
+    "scope": "x_snc_fed_forum_on",
+    "scopeId": "b5e6de9547f803d4f9de91ef016d43c6",
+    "name": "Fed Forum Onboarding demo",
+    "licensing": {
+        "enforceLicense": "none"
+    },
+    "description": "",
+    "accessControls": {
+        "runtimeAccessTracking": "none"
+    }
+}

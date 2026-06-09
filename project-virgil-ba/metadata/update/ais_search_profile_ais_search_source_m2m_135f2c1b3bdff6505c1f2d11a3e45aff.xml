@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="ais_search_profile_ais_search_source_m2m">
+    <ais_search_profile_ais_search_source_m2m action="INSERT_OR_UPDATE">
+        <exclude_attachments_in_now_assist_genius_results>false</exclude_attachments_in_now_assist_genius_results>
+        <exclude_in_now_assist_genius_results>false</exclude_in_now_assist_genius_results>
+        <exclude_in_regular_search>false</exclude_in_regular_search>
+        <profile display_value="virgil Search Profile">415f241b60dff650cd10e9d3d605e001</profile>
+        <search_source display_value="Task">df5f2c1b3bdff6505c1f2d11a3e45af8</search_source>
+        <sys_class_name>ais_search_profile_ais_search_source_m2m</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-03 12:12:24</sys_created_on>
+        <sys_id>135f2c1b3bdff6505c1f2d11a3e45aff</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>virgil Search Profile.Task</sys_name>
+        <sys_package display_value="Virgil" source="x_snc_virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_scope>
+        <sys_update_name>ais_search_profile_ais_search_source_m2m_135f2c1b3bdff6505c1f2d11a3e45aff</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-03 12:12:24</sys_updated_on>
+    </ais_search_profile_ais_search_source_m2m>
+</record_update>

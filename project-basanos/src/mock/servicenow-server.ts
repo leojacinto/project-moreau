@@ -1,0 +1,520 @@
+#!/usr/bin/env node
+
+/**
+ * Mock ServiceNow REST API Server
+ *
+ * Simulates a ServiceNow instance with realistic ITSM data
+ * for testing Basanos without a live environment.
+ *
+ * Run: npm run mock-snow
+ */
+
+import express from "express";
+
+const app = express();
+app.use(express.json());
+
+// ── Mock Data ─────────────────────────────────────────────────
+
+const GROUPS = [
+  { sys_id: "grp001", name: "Infrastructure Operations", type: "operations" },
+  { sys_id: "grp002", name: "Database Team", type: "engineering" },
+  { sys_id: "grp003", name: "Network Operations", type: "operations" },
+  { sys_id: "grp004", name: "Application Support", type: "operations" },
+  { sys_id: "grp005", name: "Service Desk", type: "operations" },
+];
+
+const CIS = [
+  { sys_id: "ci001", name: "mail-server-prod-01", sys_class_name: "cmdb_ci_server", environment: "production", operational_status: "1" },
+  { sys_id: "ci002", name: "db-cluster-prod-03", sys_class_name: "cmdb_ci_database", environment: "production", operational_status: "6" },
+  { sys_id: "ci003", name: "api-gateway-prod", sys_class_name: "cmdb_ci_app_server", environment: "production", operational_status: "1" },
+  { sys_id: "ci004", name: "web-frontend-prod", sys_class_name: "cmdb_ci_app_server", environment: "production", operational_status: "1" },
+  { sys_id: "ci005", name: "load-balancer-01", sys_class_name: "cmdb_ci_netgear", environment: "production", operational_status: "1" },
+];
+
+const SERVICES = [
+  { sys_id: "svc001", name: "Corporate Email Service", busines_criticality: "1", operational_status: "4", owned_by: { value: "grp001", display_value: "Infrastructure Operations" } },
+  { sys_id: "svc002", name: "Customer Portal", busines_criticality: "1", operational_status: "1", owned_by: { value: "grp004", display_value: "Application Support" } },
+  { sys_id: "svc003", name: "ERP Production", busines_criticality: "2", operational_status: "1", owned_by: { value: "grp002", display_value: "Database Team" } },
+];
+
+const INCIDENTS = [
+  {
+    sys_id: "inc001", number: "INC0099001", short_description: "Email service down",
+    state: { value: "1", display_value: "New" },
+    priority: { value: "1", display_value: "1 - Critical" },
+    impact: { value: "1", display_value: "1 - High" },
+    urgency: { value: "1", display_value: "1 - High" },
+    opened_at: "2026-02-17 03:00:00", sys_updated_on: "2026-02-17 03:05:00",
+    business_service: { value: "svc001", display_value: "Corporate Email Service" },
+    cmdb_ci: { value: "ci001", display_value: "mail-server-prod-01" },
+    assignment_group: { value: "grp001", display_value: "Infrastructure Operations" },
+    assigned_to: "",
+    problem_id: "",
+    reassignment_count: "0", reopen_count: "0", category: "hardware",
+  },
+  {
+    sys_id: "inc002", number: "INC0099002", short_description: "Customer portal slow response",
+    state: { value: "2", display_value: "In Progress" },
+    priority: { value: "2", display_value: "2 - High" },
+    impact: { value: "2", display_value: "2 - Medium" },
+    urgency: { value: "1", display_value: "1 - High" },
+    opened_at: "2026-02-17 02:15:00", sys_updated_on: "2026-02-17 02:30:00",
+    business_service: { value: "svc002", display_value: "Customer Portal" },
+    cmdb_ci: { value: "ci003", display_value: "api-gateway-prod" },
+    assignment_group: { value: "grp004", display_value: "Application Support" },
+    assigned_to: "",
+    problem_id: "",
+    reassignment_count: "2", reopen_count: "1", category: "software",
+  },
+  {
+    sys_id: "inc003", number: "INC0099003", short_description: "Database connection pool exhausted",
+    state: { value: "2", display_value: "In Progress" },
+    priority: { value: "1", display_value: "1 - Critical" },
+    impact: { value: "1", display_value: "1 - High" },
+    urgency: { value: "1", display_value: "1 - High" },
+    opened_at: "2026-02-17 01:30:00", sys_updated_on: "2026-02-17 01:35:00",
+    business_service: { value: "svc003", display_value: "ERP Production" },
+    cmdb_ci: { value: "ci002", display_value: "db-cluster-prod-03" },
+    assignment_group: { value: "grp002", display_value: "Database Team" },
+    assigned_to: { value: "usr001", display_value: "John Smith" },
+    problem_id: "",
+    reassignment_count: "1", reopen_count: "0", category: "database",
+  },
+  // Resolved P1 without problem record (triggers major_incident_no_problem)
+  {
+    sys_id: "inc004", number: "INC0099004", short_description: "Network outage resolved",
+    state: { value: "6", display_value: "Resolved" },
+    priority: { value: "1", display_value: "1 - Critical" },
+    impact: { value: "1", display_value: "1 - High" },
+    urgency: { value: "1", display_value: "1 - High" },
+    opened_at: "2026-02-15 10:00:00", sys_updated_on: "2026-02-16 14:00:00",
+    resolved_at: "2026-02-16 14:00:00",
+    business_service: { value: "svc002", display_value: "Customer Portal" },
+    cmdb_ci: { value: "ci005", display_value: "load-balancer-01" },
+    assignment_group: { value: "grp003", display_value: "Network Operations" },
+    assigned_to: { value: "usr002", display_value: "Jane Doe" },
+    problem_id: "",
+    reassignment_count: "0", reopen_count: "2", category: "network",
+  },
+  // Stale incident (triggers stale_incidents - old sys_updated_on)
+  {
+    sys_id: "inc005", number: "INC0099005", short_description: "Printer not working in Building C",
+    state: { value: "1", display_value: "New" },
+    priority: { value: "3", display_value: "3 - Moderate" },
+    impact: { value: "3", display_value: "3 - Low" },
+    urgency: { value: "3", display_value: "3 - Low" },
+    opened_at: "2026-01-20 09:00:00", sys_updated_on: "2026-01-20 09:05:00",
+    business_service: "",
+    cmdb_ci: "",
+    assignment_group: { value: "grp005", display_value: "Service Desk" },
+    assigned_to: "",
+    problem_id: "",
+    reassignment_count: "0", reopen_count: "0", category: "hardware",
+  },
+  // Recurring CI failure (same CI as inc003, triggers recurring_ci_failures)
+  {
+    sys_id: "inc006", number: "INC0099006", short_description: "Database timeouts on ERP",
+    state: { value: "2", display_value: "In Progress" },
+    priority: { value: "2", display_value: "2 - High" },
+    impact: { value: "2", display_value: "2 - Medium" },
+    urgency: { value: "1", display_value: "1 - High" },
+    opened_at: "2026-02-16 08:00:00", sys_updated_on: "2026-02-16 10:00:00",
+    business_service: { value: "svc003", display_value: "ERP Production" },
+    cmdb_ci: { value: "ci002", display_value: "db-cluster-prod-03" },
+    assignment_group: { value: "grp002", display_value: "Database Team" },
+    assigned_to: { value: "usr001", display_value: "John Smith" },
+    problem_id: "",
+    reassignment_count: "0", reopen_count: "0", category: "database",
+  },
+  {
+    sys_id: "inc007", number: "INC0099007", short_description: "Database replication lag",
+    state: { value: "1", display_value: "New" },
+    priority: { value: "2", display_value: "2 - High" },
+    impact: { value: "2", display_value: "2 - Medium" },
+    urgency: { value: "2", display_value: "2 - Medium" },
+    opened_at: "2026-02-17 00:30:00", sys_updated_on: "2026-02-17 00:35:00",
+    business_service: { value: "svc003", display_value: "ERP Production" },
+    cmdb_ci: { value: "ci002", display_value: "db-cluster-prod-03" },
+    assignment_group: { value: "grp002", display_value: "Database Team" },
+    assigned_to: "",
+    problem_id: "",
+    reassignment_count: "0", reopen_count: "0", category: "database",
+  },
+  {
+    sys_id: "inc008", number: "INC0099008", short_description: "Database backup failure",
+    state: { value: "2", display_value: "In Progress" },
+    priority: { value: "2", display_value: "2 - High" },
+    impact: { value: "2", display_value: "2 - Medium" },
+    urgency: { value: "1", display_value: "1 - High" },
+    opened_at: "2026-02-14 22:00:00", sys_updated_on: "2026-02-15 06:00:00",
+    business_service: { value: "svc003", display_value: "ERP Production" },
+    cmdb_ci: { value: "ci002", display_value: "db-cluster-prod-03" },
+    assignment_group: { value: "grp002", display_value: "Database Team" },
+    assigned_to: { value: "usr003", display_value: "Mike Chen" },
+    problem_id: "",
+    reassignment_count: "0", reopen_count: "1", category: "database",
+  },
+];
+
+const CHANGES = [
+  {
+    sys_id: "chg001", number: "CHG0005001", type: { value: "normal", display_value: "Normal" },
+    state: { value: "-5", display_value: "New" },
+    risk: { value: "moderate", display_value: "Moderate" },
+    start_date: "2026-02-17 00:00:00", end_date: "2026-02-18 06:00:00",
+    assignment_group: { value: "grp001", display_value: "Infrastructure Operations" },
+    cmdb_ci: { value: "ci001", display_value: "mail-server-prod-01" },
+    approval: { value: "approved", display_value: "Approved" },
+    close_code: "", close_notes: "",
+  },
+  // Failed change on CI (triggers failed_changes_on_ci)
+  {
+    sys_id: "chg002", number: "CHG0005002", type: { value: "normal", display_value: "Normal" },
+    state: { value: "4", display_value: "Closed" },
+    risk: { value: "high", display_value: "High" },
+    start_date: "2026-02-10 02:00:00", end_date: "2026-02-10 06:00:00",
+    assignment_group: { value: "grp002", display_value: "Database Team" },
+    cmdb_ci: { value: "ci002", display_value: "db-cluster-prod-03" },
+    approval: { value: "approved", display_value: "Approved" },
+    close_code: "unsuccessful", close_notes: "Rollback required - connection pool config caused outage",
+    sys_created_on: "2026-02-09 10:00:00",
+  },
+  // Unapproved normal change (triggers after_hours_change)
+  {
+    sys_id: "chg003", number: "CHG0005003", type: { value: "normal", display_value: "Normal" },
+    state: { value: "3", display_value: "Open" },
+    risk: { value: "moderate", display_value: "Moderate" },
+    start_date: "2026-02-18 22:00:00", end_date: "2026-02-19 02:00:00",
+    assignment_group: { value: "grp003", display_value: "Network Operations" },
+    cmdb_ci: { value: "ci005", display_value: "load-balancer-01" },
+    approval: { value: "not requested", display_value: "Not Yet Requested" },
+    close_code: "", close_notes: "",
+  },
+];
+
+const PROBLEMS = [
+  {
+    sys_id: "prb001", number: "PRB0001001",
+    state: { value: "2", display_value: "Root Cause Analysis" },
+    known_error: "false",
+    cmdb_ci: { value: "ci002", display_value: "db-cluster-prod-03" },
+    assignment_group: { value: "grp002", display_value: "Database Team" },
+  },
+];
+
+const SLA_RECORDS = [
+  { sys_id: "sla001", task: { value: "inc001" }, sla: { display_value: "P1 Resolution" }, has_breached: "true", business_percentage: "150" },
+  { sys_id: "sla002", task: { value: "inc003" }, sla: { display_value: "P1 Resolution" }, has_breached: "false", business_percentage: "45" },
+  { sys_id: "sla003", task: { value: "inc002" }, sla: { display_value: "P2 Resolution" }, has_breached: "true", business_percentage: "120" },
+  { sys_id: "sla004", task: { value: "inc006" }, sla: { display_value: "P2 Response" }, has_breached: "true", business_percentage: "200" },
+];
+
+const DICTIONARY: Record<string, Array<Record<string, string>>> = {
+  incident: [
+    { name: "incident", element: "number", column_label: "Number", internal_type: "string", mandatory: "true", reference: "", choice: "0", max_length: "40", comments: "Unique incident identifier" },
+    { name: "incident", element: "short_description", column_label: "Short Description", internal_type: "string", mandatory: "true", reference: "", choice: "0", max_length: "160", comments: "Brief summary" },
+    { name: "incident", element: "state", column_label: "State", internal_type: "integer", mandatory: "true", reference: "", choice: "1", max_length: "40", comments: "Incident lifecycle state" },
+    { name: "incident", element: "priority", column_label: "Priority", internal_type: "integer", mandatory: "true", reference: "", choice: "1", max_length: "40", comments: "Priority derived from impact and urgency" },
+    { name: "incident", element: "impact", column_label: "Impact", internal_type: "integer", mandatory: "true", reference: "", choice: "1", max_length: "40", comments: "Business impact" },
+    { name: "incident", element: "urgency", column_label: "Urgency", internal_type: "integer", mandatory: "true", reference: "", choice: "1", max_length: "40", comments: "Resolution urgency" },
+    { name: "incident", element: "opened_at", column_label: "Opened", internal_type: "glide_date_time", mandatory: "true", reference: "", choice: "0", max_length: "40", comments: "When the incident was created" },
+    { name: "incident", element: "business_service", column_label: "Business Service", internal_type: "reference", mandatory: "false", reference: "cmdb_ci_service", choice: "0", max_length: "32", comments: "Affected business service" },
+    { name: "incident", element: "cmdb_ci", column_label: "Configuration Item", internal_type: "reference", mandatory: "false", reference: "cmdb_ci", choice: "0", max_length: "32", comments: "Affected CI" },
+    { name: "incident", element: "assignment_group", column_label: "Assignment Group", internal_type: "reference", mandatory: "false", reference: "sys_user_group", choice: "0", max_length: "32", comments: "Assigned team" },
+    { name: "incident", element: "problem_id", column_label: "Problem", internal_type: "reference", mandatory: "false", reference: "problem", choice: "0", max_length: "32", comments: "Related problem record" },
+  ],
+  cmdb_ci: [
+    { name: "cmdb_ci", element: "name", column_label: "Name", internal_type: "string", mandatory: "true", reference: "", choice: "0", max_length: "255", comments: "CI name" },
+    { name: "cmdb_ci", element: "sys_class_name", column_label: "Class", internal_type: "sys_class_name", mandatory: "false", reference: "", choice: "0", max_length: "80", comments: "CI class" },
+    { name: "cmdb_ci", element: "environment", column_label: "Environment", internal_type: "string", mandatory: "false", reference: "", choice: "1", max_length: "40", comments: "Deployment environment" },
+    { name: "cmdb_ci", element: "operational_status", column_label: "Operational Status", internal_type: "integer", mandatory: "false", reference: "", choice: "1", max_length: "40", comments: "Current status" },
+  ],
+  cmdb_ci_service: [
+    { name: "cmdb_ci_service", element: "name", column_label: "Name", internal_type: "string", mandatory: "true", reference: "", choice: "0", max_length: "255", comments: "Service name" },
+    { name: "cmdb_ci_service", element: "busines_criticality", column_label: "Business Criticality", internal_type: "integer", mandatory: "false", reference: "", choice: "1", max_length: "40", comments: "Criticality level" },
+    { name: "cmdb_ci_service", element: "operational_status", column_label: "Operational Status", internal_type: "integer", mandatory: "false", reference: "", choice: "1", max_length: "40", comments: "Current status" },
+    { name: "cmdb_ci_service", element: "owned_by", column_label: "Owned By", internal_type: "reference", mandatory: "false", reference: "sys_user_group", choice: "0", max_length: "32", comments: "Owning group" },
+  ],
+  change_request: [
+    { name: "change_request", element: "number", column_label: "Number", internal_type: "string", mandatory: "true", reference: "", choice: "0", max_length: "40", comments: "Change number" },
+    { name: "change_request", element: "type", column_label: "Type", internal_type: "string", mandatory: "false", reference: "", choice: "1", max_length: "40", comments: "Change type" },
+    { name: "change_request", element: "state", column_label: "State", internal_type: "integer", mandatory: "true", reference: "", choice: "1", max_length: "40", comments: "Change state" },
+    { name: "change_request", element: "risk", column_label: "Risk", internal_type: "string", mandatory: "false", reference: "", choice: "1", max_length: "40", comments: "Risk level" },
+    { name: "change_request", element: "start_date", column_label: "Planned Start", internal_type: "glide_date_time", mandatory: "false", reference: "", choice: "0", max_length: "40", comments: "Planned start" },
+    { name: "change_request", element: "end_date", column_label: "Planned End", internal_type: "glide_date_time", mandatory: "false", reference: "", choice: "0", max_length: "40", comments: "Planned end" },
+    { name: "change_request", element: "assignment_group", column_label: "Assignment Group", internal_type: "reference", mandatory: "false", reference: "sys_user_group", choice: "0", max_length: "32", comments: "Requesting group" },
+  ],
+  problem: [
+    { name: "problem", element: "number", column_label: "Number", internal_type: "string", mandatory: "true", reference: "", choice: "0", max_length: "40", comments: "Problem number" },
+    { name: "problem", element: "state", column_label: "State", internal_type: "integer", mandatory: "true", reference: "", choice: "1", max_length: "40", comments: "Problem state" },
+    { name: "problem", element: "known_error", column_label: "Known Error", internal_type: "boolean", mandatory: "false", reference: "", choice: "0", max_length: "40", comments: "Is known error" },
+    { name: "problem", element: "cmdb_ci", column_label: "Configuration Item", internal_type: "reference", mandatory: "false", reference: "cmdb_ci", choice: "0", max_length: "32", comments: "Root cause CI" },
+    { name: "problem", element: "assignment_group", column_label: "Assignment Group", internal_type: "reference", mandatory: "false", reference: "sys_user_group", choice: "0", max_length: "32", comments: "Investigating team" },
+  ],
+  sys_user_group: [
+    { name: "sys_user_group", element: "name", column_label: "Name", internal_type: "string", mandatory: "true", reference: "", choice: "0", max_length: "80", comments: "Group name" },
+    { name: "sys_user_group", element: "type", column_label: "Type", internal_type: "string", mandatory: "false", reference: "", choice: "1", max_length: "40", comments: "Group type" },
+  ],
+};
+
+const CHOICES: Record<string, Record<string, Array<{ value: string; label: string }>>> = {
+  incident: {
+    state: [
+      { value: "1", label: "New" }, { value: "2", label: "In Progress" },
+      { value: "3", label: "On Hold" }, { value: "6", label: "Resolved" },
+      { value: "7", label: "Closed" }, { value: "8", label: "Cancelled" },
+    ],
+    priority: [
+      { value: "1", label: "1 - Critical" }, { value: "2", label: "2 - High" },
+      { value: "3", label: "3 - Moderate" }, { value: "4", label: "4 - Low" },
+      { value: "5", label: "5 - Planning" },
+    ],
+    impact: [
+      { value: "1", label: "1 - High" }, { value: "2", label: "2 - Medium" },
+      { value: "3", label: "3 - Low" },
+    ],
+    urgency: [
+      { value: "1", label: "1 - High" }, { value: "2", label: "2 - Medium" },
+      { value: "3", label: "3 - Low" },
+    ],
+  },
+};
+
+const TABLES: Record<string, Array<Record<string, unknown>>> = {
+  incident: INCIDENTS,
+  cmdb_ci: CIS,
+  cmdb_ci_service: SERVICES,
+  change_request: CHANGES,
+  problem: PROBLEMS,
+  sys_user_group: GROUPS,
+  task_sla: SLA_RECORDS,
+};
+
+// ── Basic Auth Middleware ──────────────────────────────────────
+
+function checkAuth(req: express.Request, res: express.Response): boolean {
+  const auth = req.headers.authorization;
+  if (!auth || !auth.startsWith("Basic ")) {
+    res.status(401).json({ error: { message: "Authentication required" } });
+    return false;
+  }
+  return true;
+}
+
+// ── Table API ─────────────────────────────────────────────────
+
+function handleTableQuery(req: express.Request, res: express.Response, sysId?: string) {
+  if (!checkAuth(req, res)) return;
+
+  const tableName = req.params.tableName as string;
+
+  // Dictionary query (handle before TABLES check)
+  if (tableName === "sys_dictionary") {
+    const query = (req.query.sysparm_query as string) || "";
+    const nameMatch = query.match(/name=(\w+)/);
+    if (nameMatch) {
+      const targetTable = nameMatch[1];
+      const dict = DICTIONARY[targetTable] || [];
+      return res.json({ result: dict });
+    }
+    return res.json({ result: [] });
+  }
+
+  // Choice query
+  if (tableName === "sys_choice") {
+    const query = (req.query.sysparm_query as string) || "";
+    const nameMatch = query.match(/name=(\w+)/);
+    const elementMatch = query.match(/element=(\w+)/);
+    if (nameMatch && elementMatch) {
+      const choices = CHOICES[nameMatch[1]]?.[elementMatch[1]] || [];
+      return res.json({ result: choices });
+    }
+    return res.json({ result: [] });
+  }
+
+  // General table query
+  const records = TABLES[tableName as keyof typeof TABLES];
+  if (!records) {
+    return res.status(404).json({ error: { message: `Table ${tableName} not found` } });
+  }
+
+  if (sysId) {
+    const record = records.find((r: Record<string, unknown>) => r.sys_id === sysId);
+    if (!record) return res.status(404).json({ error: { message: "Record not found" } });
+    return res.json({ result: record });
+  }
+
+  const limit = parseInt((req.query.sysparm_limit as string) || "100", 10);
+  const offset = parseInt((req.query.sysparm_offset as string) || "0", 10);
+  const sliced = records.slice(offset, offset + limit);
+
+  return res.json({ result: sliced });
+}
+
+app.get("/api/now/table/:tableName/:sysId", (req, res) => {
+  handleTableQuery(req, res, req.params.sysId);
+});
+
+app.get("/api/now/table/:tableName", (req, res) => {
+  handleTableQuery(req, res);
+});
+
+// ── Properties endpoint (for connection test) ─────────────────
+
+app.get("/api/now/table/sys_properties", (req, res) => {
+  if (!checkAuth(req, res)) return;
+  res.json({ result: [{ sys_id: "mock_property", name: "mock", value: "true" }] });
+});
+
+// ── Mock OAuth Token Endpoint ──────────────────────────────────
+
+app.post("/oauth_token.do", (_req, res) => {
+  res.json({
+    access_token: "mock_token_" + Date.now(),
+    token_type: "Bearer",
+    expires_in: 3600,
+    scope: "mcp_server",
+  });
+});
+
+// ── Mock MCP Tools API ────────────────────────────────────────
+
+const MCP_TOOLS = [
+  {
+    name: "Look up incident records",
+    description: "Query incident records by various fields.",
+    tool_type: "rest_api",
+    api_endpoint: "/api/sn_mcp_server/mcp_lookup_service/get_records",
+    api_method: "POST",
+    tool_inputs: {
+      status: { type: "string", required: false, description: "Incident state" },
+      priority: { type: "string", required: false, description: "Incident priority" },
+      assigned_to: { type: "string", required: false, description: "Assigned user" },
+      limit: { type: "number", required: false, description: "Max records" },
+    },
+    template: { table: "incident", status: "{{status}}", priority: "{{priority}}", assigned_to: "{{assigned_to}}", limit: "{{limit}}" },
+  },
+  {
+    name: "Incident summarization",
+    description: "Summarize an incident record.",
+    tool_type: "ai_skill",
+    preprocessing_endpoint: "/api/sn_mcp_server/mcp_lookup_service/preprocess_and_execute_skill",
+    tool_inputs: {
+      number: { type: "string", required: true, description: "Incident number" },
+    },
+    template: { payload: { tablename: "incident", sysid: "incident.number" } },
+    config_dict: {},
+  },
+  {
+    name: "Resolve incident",
+    description: "Resolve a ServiceNow incident by setting its state to Resolved. This is a WRITE operation.",
+    tool_type: "rest_api",
+    api_endpoint: "/api/sn_mcp_server/mcp_action_service/resolve_incident",
+    api_method: "POST",
+    tool_inputs: {
+      incident_number: { type: "string", required: true, description: "Incident number (e.g. INC0099001)" },
+      resolution_notes: { type: "string", required: true, description: "Notes describing the resolution" },
+      resolution_code: { type: "string", required: false, description: "Resolution code (Solved, Workaround, Duplicate, etc.)" },
+    },
+    template: { incident_number: "{{incident_number}}", resolution_notes: "{{resolution_notes}}", resolution_code: "{{resolution_code}}" },
+  },
+  {
+    name: "Close incident",
+    description: "Close a resolved incident. This is a WRITE operation.",
+    tool_type: "rest_api",
+    api_endpoint: "/api/sn_mcp_server/mcp_action_service/close_incident",
+    api_method: "POST",
+    tool_inputs: {
+      incident_number: { type: "string", required: true, description: "Incident number" },
+      close_notes: { type: "string", required: true, description: "Closing notes" },
+    },
+    template: { incident_number: "{{incident_number}}", close_notes: "{{close_notes}}" },
+  },
+  {
+    name: "Approve change request",
+    description: "Approve a change request. This is a WRITE operation.",
+    tool_type: "rest_api",
+    api_endpoint: "/api/sn_mcp_server/mcp_action_service/approve_change",
+    api_method: "POST",
+    tool_inputs: {
+      change_number: { type: "string", required: true, description: "Change request number (e.g. CHG0000001)" },
+      approval_notes: { type: "string", required: true, description: "Approval justification" },
+    },
+    template: { change_number: "{{change_number}}", approval_notes: "{{approval_notes}}" },
+  },
+];
+
+// MCP tools list endpoint (mirrors real SN API)
+app.get("/api/sn_mcp_server/mcp_tools_api/tools/server/:serverName", (req, res) => {
+  res.json({ result: { tools: MCP_TOOLS } });
+});
+
+// MCP lookup service (for read tools)
+app.post("/api/sn_mcp_server/mcp_lookup_service/get_records", (req, res) => {
+  const table = req.body.table || "incident";
+  const records = TABLES[table as keyof typeof TABLES] || [];
+  const limit = parseInt(req.body.limit || "10", 10);
+  res.json({ result: { records: records.slice(0, limit), count: records.length, table } });
+});
+
+// MCP AI skill preprocessing (for summarization tools)
+app.post("/api/sn_mcp_server/mcp_lookup_service/preprocess_and_execute_skill", (req, res) => {
+  const number = req.body?.payload?.number || req.body?.number || "unknown";
+  const incident = INCIDENTS.find((i) => i.number === number);
+  if (incident) {
+    res.json({ result: { summary: `${incident.number}: ${incident.short_description} (Priority: ${incident.priority.display_value}, State: ${incident.state.display_value})` } });
+  } else {
+    res.json({ result: { summary: `No incident found with number ${number}` } });
+  }
+});
+
+// MCP action service (for write tools - the ones constraints block)
+app.post("/api/sn_mcp_server/mcp_action_service/:action", (req, res) => {
+  const action = req.params.action;
+  if (action === "resolve_incident") {
+    const inc = INCIDENTS.find((i) => i.number === req.body.incident_number);
+    if (!inc) return res.status(404).json({ error: { message: `Incident ${req.body.incident_number} not found` } });
+    (inc.state as { value: string; display_value: string }).value = "6";
+    (inc.state as { value: string; display_value: string }).display_value = "Resolved";
+    res.json({ result: { success: true, incident: inc.number, new_state: "Resolved", resolution_notes: req.body.resolution_notes } });
+  } else if (action === "close_incident") {
+    const inc = INCIDENTS.find((i) => i.number === req.body.incident_number);
+    if (!inc) return res.status(404).json({ error: { message: `Incident ${req.body.incident_number} not found` } });
+    (inc.state as { value: string; display_value: string }).value = "7";
+    (inc.state as { value: string; display_value: string }).display_value = "Closed";
+    res.json({ result: { success: true, incident: inc.number, new_state: "Closed", close_notes: req.body.close_notes } });
+  } else if (action === "approve_change") {
+    const chg = CHANGES.find((c) => c.number === req.body.change_number);
+    if (!chg) return res.status(404).json({ error: { message: `Change ${req.body.change_number} not found` } });
+    res.json({ result: { success: true, change: chg.number, approval_status: "Approved", notes: req.body.approval_notes } });
+  } else {
+    res.status(400).json({ error: { message: `Unknown action: ${action}` } });
+  }
+});
+
+// ── Root route (browser-friendly status) ──────────────────────
+
+app.get("/", (_req, res) => {
+  res.type("html").send(`
+    <html><body style="font-family:system-ui;max-width:600px;margin:2rem auto;color:#333;">
+      <h1>Mock ServiceNow Server</h1>
+      <p style="color:green;font-weight:bold;">&#10003; Running and ready for Basanos</p>
+      <p>This server simulates a ServiceNow REST API. It is consumed by the Basanos CLI pipeline, not by a browser.</p>
+      <h3>Available tables</h3>
+      <ul>${Object.keys(TABLES).map(t => `<li>${t} (${(TABLES[t as keyof typeof TABLES] as unknown[]).length} records)</li>`).join("")}</ul>
+      <h3>How to use</h3>
+      <pre style="background:#f4f4f4;padding:1rem;border-radius:4px;">npm run demo   # runs mock + pipeline + dashboard together</pre>
+    </body></html>
+  `);
+});
+
+// ── Start ─────────────────────────────────────────────────────
+
+const PORT = parseInt(process.env.MOCK_SNOW_PORT || "8090", 10);
+app.listen(PORT, () => {
+  console.log(`Mock ServiceNow server running at http://localhost:${PORT}`);
+  console.log(`  Auth: any Basic auth accepted`);
+  console.log(`  Tables: ${Object.keys(TABLES).join(", ")}`);
+  console.log(`  Incidents: ${INCIDENTS.length}, CIs: ${CIS.length}, Services: ${SERVICES.length}`);
+});

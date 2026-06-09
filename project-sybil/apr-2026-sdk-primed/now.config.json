@@ -1,0 +1,15 @@
+{
+    "scope": "x_snc_apr_trv",
+    "scopeId": "c65f02812fc8835c920fa33fafa4e342",
+    "name": "Travel Request Management",
+    "description": "April 2026 Travel Request App - SDK Approach (Project Sybil)",
+    "fluentDir": "src/fluent",
+    "serverModulesDir": "src/server",
+    "clientDir": "src/client",
+    "jsLevel": "es_latest",
+    "dependencies": {
+        "global": {
+            "tables": ["sys_user", "cmn_department", "core_country", "sys_user_has_role", "task", "sc_req_item", "sc_cat_item", "sys_email"]
+        }
+    }
+}

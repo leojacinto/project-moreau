@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_module">
+    <sys_module action="INSERT_OR_UPDATE">
+        <content><![CDATA[import { gs, GlideRecord, GlideDateTime } from '@servicenow/glide';
+import { RESTMessageV2 } from '@servicenow/glide/sn_ws';
+
+export function getAllStudents() {
+    try {
+        gs.info('getAllStudents REST API called - calling external API directly');
+        
+        var externalApiUrl = 'https://uoworacle.free.beeceptor.com/api/students';
+        
+        try {
+            var request = new RESTMessageV2();
+            request.setEndpoint(externalApiUrl);
+            request.setHttpMethod('GET');
+            request.setRequestHeader('Accept', 'application/json');
+            
+            var response = request.execute();
+            var httpStatus = response.getStatusCode();
+            var responseBody = response.getBody();
+            
+            gs.info('External API response status: ' + httpStatus);
+            
+            if (httpStatus == 200) {
+                var students = JSON.parse(responseBody);
+                
+                return {
+                    success: true,
+                    students: students,
+                    count: students.length,
+                    message: 'Successfully retrieved data from external API: ' + externalApiUrl,
+                    apiUrl: externalApiUrl,
+                    httpStatus: httpStatus
+                };
+            } else {
+                return {
+                    success: false,
+                    students: [],
+                    count: 0,
+                    message: 'External API returned error status: ' + httpStatus,
+                    apiUrl: externalApiUrl,
+                    httpStatus: httpStatus
+                };
+            }
+            
+        } catch (apiError) {
+            gs.error('Error calling external API: ' + apiError.message);
+            return {
+                success: false,
+                students: [],
+                count: 0,
+                message: 'Error calling external API: ' + apiError.message,
+                apiUrl: externalApiUrl
+            };
+        }
+        
+    } catch (error) {
+        gs.error('Overall error in getAllStudents: ' + error.message);
+        return {
+            success: false,
+            students: [],
+            count: 0,
+            message: 'REST API error: ' + error.message
+        };
+    }
+}
+
+export function testConnection() {
+    try {
+        gs.info('testConnection REST API called - testing external API directly');
+        
+        var externalApiUrl = 'https://uoworacle.free.beeceptor.com/api/students';
+        
+        try {
+            var request = new RESTMessageV2();
+            request.setEndpoint(externalApiUrl);
+            request.setHttpMethod('GET');
+            request.setRequestHeader('Accept', 'application/json');
+            
+            var response = request.execute();
+            var httpStatus = response.getStatusCode();
+            
+            return {
+                success: httpStatus == 200,
+                message: 'External API test: ' + (httpStatus == 200 ? 'SUCCESS' : 'FAILED'),
+                details: 'API URL: ' + externalApiUrl + ', HTTP Status: ' + httpStatus,
+                apiUrl: externalApiUrl,
+                httpStatus: httpStatus
+            };
+            
+        } catch (apiError) {
+            return {
+                success: false,
+                message: 'External API test failed: ' + apiError.message,
+                details: 'API URL: ' + externalApiUrl,
+                apiUrl: externalApiUrl
+            };
+        }
+        
+    } catch (error) {
+        gs.error('Error in testConnection: ' + error.message);
+        return {
+            success: false,
+            message: 'Test error: ' + error.message
+        };
+    }
+}
+
+export function syncStudents() {
+    try {
+        gs.info('syncStudents REST API called');
+        
+        var studentsResult = getAllStudents();
+        
+        if (!studentsResult.success || studentsResult.students.length === 0) {
+            return {
+                success: false,
+                message: 'Cannot sync - no student data available: ' + studentsResult.message,
+                count: 0,
+                details: { 
+                    inserted: 0, 
+                    updated: 0, 
+                    error: studentsResult.message
+                }
+            };
+        }
+        
+        var students = studentsResult.students;
+        var syncCount = 0;
+        var updateCount = 0;
+        var insertCount = 0;
+        var currentDateTime = new GlideDateTime().getDisplayValue();
+        
+        for (var i = 0; i < students.length; i++) {
+            var student = students[i];
+            
+            var gr = new GlideRecord('x_snc_student_ma_2_student');
+            gr.addQuery('student_id', student.studentId || student.id);
+            gr.query();
+            
+            var normalizedStatus = normalizeStatus(student.enrollmentStatus || student.status);
+            
+            if (gr.next()) {
+                gr.setValue('first_name', student.firstName || student.first_name);
+                gr.setValue('last_name', student.lastName || student.last_name);
+                gr.setValue('email', student.email);
+                gr.setValue('major', student.major);
+                gr.setValue('enrollment_status', normalizedStatus);
+                gr.setValue('last_sync_date', currentDateTime);
+                gr.update();
+                updateCount++;
+            } else {
+                gr.initialize();
+                gr.setValue('student_id', student.studentId || student.id);
+                gr.setValue('first_name', student.firstName || student.first_name);
+                gr.setValue('last_name', student.lastName || student.last_name);
+                gr.setValue('email', student.email);
+                gr.setValue('major', student.major);
+                gr.setValue('enrollment_status', normalizedStatus);
+                gr.setValue('sync_with_oracle', true);
+                gr.setValue('last_sync_date', currentDateTime);
+                gr.insert();
+                insertCount++;
+            }
+            syncCount++;
+        }
+        
+        return {
+            success: true,
+            message: 'Successfully synced ' + syncCount + ' students from external API',
+            count: syncCount,
+            details: {
+                inserted: insertCount,
+                updated: updateCount,
+                total_processed: syncCount
+            }
+        };
+        
+    } catch (error) {
+        gs.error('Error in syncStudents: ' + error.message);
+        return {
+            success: false,
+            message: 'Sync error: ' + error.message,
+            count: 0,
+            details: { inserted: 0, updated: 0, error: error.message }
+        };
+    }
+}
+
+function normalizeStatus(status) {
+    if (!status) return 'enrolled';
+    
+    switch (status.toString().toLowerCase()) {
+        case 'enrolled': return 'enrolled';
+        case 'graduated': return 'graduated';
+        case 'on leave': 
+        case 'on_leave': 
+        case 'leave': return 'on_leave';
+        default: return 'enrolled';
+    }
+}]]></content>
+        <external_source>false</external_source>
+        <path>x_snc_student_ma_2/x-snc-student-ma-2/1.0.0/src/server/rest-apis/student-api.js</path>
+        <sys_class_name>sys_module</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-12 10:13:24</sys_created_on>
+        <sys_id>6023316a43044f1abfe44f173bb718ba</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_student_ma_2/x-snc-student-ma-2/1.0.0/src/server/rest-apis/student-api.js</sys_name>
+        <sys_package display_value="Student Ma 2" source="x_snc_student_ma_2">9803002747c1be103674de79116d436d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Student Ma 2">9803002747c1be103674de79116d436d</sys_scope>
+        <sys_update_name>sys_module_6023316a43044f1abfe44f173bb718ba</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-12 10:13:24</sys_updated_on>
+    </sys_module>
+</record_update>

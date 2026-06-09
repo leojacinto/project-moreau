@@ -1,0 +1,53 @@
+{
+  "app": {
+    "name": "Travel Request",
+    "table": "x_snc_travel_req_request",
+    "icon": "✈️",
+    "badge": "Build Agent",
+    "badgeColor": "#f59e0b"
+  },
+  "fields": [
+    { "name": "destination", "label": "Destination", "type": "text", "required": true, "placeholder": "e.g. Tokyo, Japan", "gridVisible": true },
+    { "name": "departure_date", "label": "Departure Date", "type": "date", "required": true, "gridVisible": true },
+    { "name": "return_date", "label": "Return Date", "type": "date", "required": true, "gridVisible": true },
+    { "name": "purpose", "label": "Purpose", "type": "textarea", "required": true, "placeholder": "Business justification...", "gridVisible": true, "truncate": 60 },
+    { "name": "estimated_cost", "label": "Estimated Cost (USD)", "type": "currency", "required": true, "placeholder": "0.00", "gridVisible": true },
+    { "name": "notes", "label": "Notes", "type": "text", "required": false, "placeholder": "Optional", "gridVisible": false },
+    { "name": "rejection_reason", "label": "Rejection Reason", "type": "text", "required": false, "gridVisible": false, "showOnReject": true }
+  ],
+  "states": {
+    "field": "state",
+    "default": "draft",
+    "values": [
+      { "value": "draft", "label": "Draft", "color": "#475569" },
+      { "value": "submitted", "label": "Submitted", "color": "#3b82f6" },
+      { "value": "approved", "label": "Approved", "color": "#22c55e" },
+      { "value": "rejected", "label": "Rejected", "color": "#ef4444" },
+      { "value": "completed", "label": "Completed", "color": "#a855f7" }
+    ],
+    "transitions": {
+      "draft": ["submitted"],
+      "submitted": ["approved", "rejected"],
+      "approved": ["completed"],
+      "rejected": [],
+      "completed": []
+    }
+  },
+  "actions": [
+    { "name": "submit", "label": "Submit", "fromState": "draft", "toState": "submitted", "style": "primary", "confirm": false },
+    { "name": "approve", "label": "Approve", "fromState": "submitted", "toState": "approved", "style": "success", "confirm": false },
+    { "name": "reject", "label": "Reject", "fromState": "submitted", "toState": "rejected", "style": "danger", "confirm": true, "promptField": "rejection_reason", "promptMessage": "Rejection reason:" },
+    { "name": "delete", "label": "🗑", "fromState": "draft", "style": "danger", "isDelete": true, "confirm": true, "confirmMessage": "Delete this draft?" }
+  ],
+  "validation": [
+    { "rule": "required", "fields": ["destination", "departure_date", "return_date", "purpose", "estimated_cost"], "message": "All fields except notes are required" },
+    { "rule": "dateAfter", "field": "return_date", "afterField": "departure_date", "message": "Return date must be after departure date" },
+    { "rule": "positive", "field": "estimated_cost", "message": "Estimated cost must be positive" }
+  ],
+  "listConfig": {
+    "columns": ["number", "destination", "departure_date", "return_date", "estimated_cost", "state"],
+    "defaultSort": "sys_created_onDESC",
+    "pageSize": 100,
+    "searchFields": ["destination", "purpose"]
+  }
+}

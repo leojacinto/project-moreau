@@ -1,0 +1,31 @@
+import { readFileSync } from 'fs';
+import { resolve, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const schema = JSON.parse(readFileSync(resolve(__dirname, 'schema.json'), 'utf-8'));
+
+console.log('═'.repeat(60));
+console.log('  Build Agent — Schema Analysis');
+console.log('═'.repeat(60));
+console.log(`  App:        ${schema.app.name}`);
+console.log(`  Table:      ${schema.app.table}`);
+console.log(`  Fields:     ${schema.fields.length}`);
+console.log(`  States:     ${schema.states.values.length}`);
+console.log(`  Actions:    ${schema.actions.length}`);
+console.log(`  Validators: ${schema.validation.length}`);
+console.log('');
+console.log('  Generated Components:');
+console.log('    ✅ SchemaForm — auto-renders form from field definitions');
+console.log('    ✅ SchemaTable — auto-renders list from column config');
+console.log('    ✅ ActionButtons — auto-renders per-row actions from transitions');
+console.log('    ✅ StateBadge — auto-styled from state color config');
+console.log('    ✅ Validation — auto-validates from rule definitions');
+console.log('    ✅ StatsBar — auto-computed from state values');
+console.log('');
+console.log('  The Build Agent pattern means:');
+console.log('    → UI is GENERATED from schema.json, not hand-coded');
+console.log('    → Adding a field = add one line to schema.json');
+console.log('    → Changing workflow = update states.transitions');
+console.log('    → Zero component code changes needed');
+console.log('═'.repeat(60));

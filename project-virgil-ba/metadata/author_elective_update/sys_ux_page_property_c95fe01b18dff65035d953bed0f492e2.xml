@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ux_page_property">
+    <sys_ux_page_property action="DELETE">
+        <choices/>
+        <description>Tabs Configuration</description>
+        <name>chrome_tab</name>
+        <page display_value="Virgil">455f241baadff650d4b79a1ba69ecd01</page>
+        <required_translations>[ {
+  "message" : "Minos Finding",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Minos Scan",
+  "code" : "",
+  "comment" : ""
+} ]</required_translations>
+        <route/>
+        <suffix/>
+        <sys_class_name>sys_ux_page_property</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-03 12:12:17</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>global</sys_domain_path>
+        <sys_id>c95fe01b18dff65035d953bed0f492e2</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>chrome_tab</sys_name>
+        <sys_package display_value="Virgil" source="x_snc_virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_scope>
+        <sys_update_name>sys_ux_page_property_c95fe01b18dff65035d953bed0f492e2</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-03 12:47:51</sys_updated_on>
+        <type>json</type>
+        <unique_name>x_snc_virgil.455f241baadff650d4b79a1ba69ecd01.root.global.chrome_tab</unique_name>
+        <value>{"contextual":["record"],"newTabMenu":[{"label":{"translatable":true,"message":"Minos Scan"},"routeInfo":{"route":"record","fields":{"table":"x_snc_virgil_minos_scan","sysId":"-1"},"multiInstField":"sysId"},"condition":{"tableDescription":{"table":"x_snc_virgil_minos_scan","canCreate":true}}},{"label":{"translatable":true,"message":"Minos Finding"},"routeInfo":{"route":"record","fields":{"table":"x_snc_virgil_minos_finding","sysId":"-1"},"multiInstField":"sysId"},"condition":{"tableDescription":{"table":"x_snc_virgil_minos_finding","canCreate":true}}}],"maxMainTabLimit":10,"maxTotalSubTabLimit":30}</value>
+    </sys_ux_page_property>
+    <sys_translated_text action="DELETE" query="documentkey=c95fe01b18dff65035d953bed0f492e2"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Virgil">232fa0973bdff6505c1f2d11a3e45a49</application>
+        <file_path/>
+        <instance_id>5e7c18142baa6a50e2e6fcd2ce91bfd9</instance_id>
+        <instance_name>demoalectriallwf118028</instance_name>
+        <name>sys_ux_page_property_c95fe01b18dff65035d953bed0f492e2</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ux_page_property"><sys_ux_page_property action="INSERT_OR_UPDATE"><choices/><description>Tabs Configuration</description><name>chrome_tab</name><page display_value="Virgil">455f241baadff650d4b79a1ba69ecd01</page><required_translations>[ {
+  "message" : "Minos Finding",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Minos Scan",
+  "code" : "",
+  "comment" : ""
+} ]</required_translations><route/><suffix/><sys_class_name>sys_ux_page_property</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-03-03 12:12:17</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>global</sys_domain_path><sys_id>c95fe01b18dff65035d953bed0f492e2</sys_id><sys_mod_count>2</sys_mod_count><sys_name>chrome_tab</sys_name><sys_package display_value="Virgil" source="x_snc_virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_package><sys_policy/><sys_scope display_value="Virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_scope><sys_update_name>sys_ux_page_property_c95fe01b18dff65035d953bed0f492e2</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-03-03 12:47:51</sys_updated_on><type>json</type><unique_name>x_snc_virgil.455f241baadff650d4b79a1ba69ecd01.root.global.chrome_tab</unique_name><value>{"contextual":["record"],"newTabMenu":[{"label":{"translatable":true,"message":"Minos Scan"},"routeInfo":{"route":"record","fields":{"table":"x_snc_virgil_minos_scan","sysId":"-1"},"multiInstField":"sysId"},"condition":{"tableDescription":{"table":"x_snc_virgil_minos_scan","canCreate":true}}},{"label":{"translatable":true,"message":"Minos Finding"},"routeInfo":{"route":"record","fields":{"table":"x_snc_virgil_minos_finding","sysId":"-1"},"multiInstField":"sysId"},"condition":{"tableDescription":{"table":"x_snc_virgil_minos_finding","canCreate":true}}}],"maxMainTabLimit":10,"maxTotalSubTabLimit":30}</value></sys_ux_page_property><sys_translated_text action="delete_multiple" query="documentkey=c95fe01b18dff65035d953bed0f492e2"/></record_update>]]></payload>
+        <payload_hash>1254347398</payload_hash>
+        <record_name>chrome_tab</record_name>
+        <reverted_from/>
+        <source>af2fe0973bdff6505c1f2d11a3e45a56</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-03 12:47:51</sys_created_on>
+        <sys_id>2e77f0d73b933a505c1f2d11a3e45aa7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19cb3bd92170000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-03 12:47:51</sys_updated_on>
+        <type>UX Page Property</type>
+        <update_guid>6677f0d7da933a50622c558cbcc12aa6</update_guid>
+        <update_guid_history>6677f0d7da933a50622c558cbcc12aa6:1254347398,db5f2c1b8bdff650ef043df0752151d0:718096535,535f2c1b54dff6502f5689f23b3c1dce:560342169</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-03 13:41:56</sys_created_on>
+        <sys_db_object display_value="" name="sys_ux_page_property">sys_ux_page_property</sys_db_object>
+        <sys_id>359da2d01c5b4d638fabc3e2440b3f79</sys_id>
+        <sys_metadata>c95fe01b18dff65035d953bed0f492e2</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>chrome_tab</sys_name>
+        <sys_package display_value="Virgil" source="x_snc_virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_scope>
+        <sys_scope_delete display_value="">036c974ddbaa4ec680caa7e427fad4c1</sys_scope_delete>
+        <sys_update_name>sys_ux_page_property_c95fe01b18dff65035d953bed0f492e2</sys_update_name>
+        <sys_update_version display_value="sys_ux_page_property_c95fe01b18dff65035d953bed0f492e2">2e77f0d73b933a505c1f2d11a3e45aa7</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-03 13:41:56</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

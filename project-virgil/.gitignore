@@ -1,0 +1,92 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Environment variables
+.env
+.env.local
+
+# Plutus (confidential — all WDF credit sizing code)
+backend/.plutus_key
+backend/services/plutus_scanner.py
+backend/services/plutus_pricing.yaml
+backend/set_plutus_password.py
+frontend/src/components/PlutusPricing.js
+servicenow-app/script_includes/PlutusScanner.js
+servicenow-app/rest_api/operations/plutus_scan.js
+servicenow-app/rest_api/operations/plutus_scan.json
+servicenow-app/rest_api/operations/plutus_history.js
+servicenow-app/rest_api/operations/plutus_history.json
+servicenow-app/data/wdf_rate_card_seed.json
+servicenow-app/tables/wdf_rate_card.json
+servicenow-app/tables/wdf_scan.json
+servicenow-app/tables/wdf_scan_line.json
+
+# Uploads and generated files
+backend/uploads/
+backend/diagrams/
+backend/vectordb/
+backend/jdbc/*.jar
+
+# Reference documents (not for distribution)
+backend/documents/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# React
+frontend/build/
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Scratch / test scripts (may contain credentials)
+test_onellm_models.py
+backend/test_direct_connection.py
+backend/test_working_script.py
+servicenow-app/cleanup.py
+backend/scripts/
+
+# ServiceNow deploy state (instance-specific)
+servicenow-app/.deploy_ids.json
+servicenow-app/package.json
+servicenow-app/package-lock.json
+servicenow-app/node_modules/
+
+# Distribution
+dist/
+build/
+*.egg-info/

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_alias_templates">
+    <sys_alias_templates action="INSERT_OR_UPDATE">
+        <default_data_template>{&amp;#13;
+	"credential": {&amp;#13;
+		"api_key": "&lt;provider-api-key&gt;",&amp;#13;
+		"name": "&lt;provider-name&gt; Spoke Credential",&amp;#13;
+		"table": "api_key_credentials"&amp;#13;
+	},&amp;#13;
+	"connection": {&amp;#13;
+		"use_mid": false,&amp;#13;
+		"connection_url": "",&amp;#13;
+		"name": "",&amp;#13;
+		"table": "http_connection"&amp;#13;
+	}&amp;#13;
+}</default_data_template>
+        <dynamic_data_schema>{&amp;#13;
+	"connection_fields": [{&amp;#13;
+		"name": "connection.name",&amp;#13;
+		"label": "Connection Name",&amp;#13;
+		"type": "text",&amp;#13;
+		"defaultValue": "&lt;provider-name&gt; Spoke Connection",&amp;#13;
+		"hint": "Display name for the Connection", &amp;#13;
+                "mandatory":true&amp;#13;
+	}, {&amp;#13;
+		"name": "connection.connection_url",&amp;#13;
+		"label": "Connection URL",&amp;#13;
+		"type": "text",&amp;#13;
+		"defaultValue": "https://&lt;provider-domain-name&gt;.com",&amp;#13;
+		"hint": "Connection URL for provider", &amp;#13;
+                "mandatory":true&amp;#13;
+	}],&amp;#13;
+	"credential_fields": [{&amp;#13;
+		"name": "credential.api_key",&amp;#13;
+		"label": "API Key",&amp;#13;
+		"type": "password",&amp;#13;
+		"defaultValue": "",&amp;#13;
+		"hint": "API Key for provider",&amp;#13;
+                "mandatory":true&amp;#13;
+	}]&amp;#13;
+}</dynamic_data_schema>
+        <name>Student Data Configuration Template</name>
+        <on_edit_script/>
+        <post_process_script/>
+        <pre_edit_script/>
+        <sys_class_name>sys_alias_templates</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-12 12:18:01</sys_created_on>
+        <sys_id>eb2889eb4749fe103674de79116d43be</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Student Data Configuration Template</sys_name>
+        <sys_package display_value="Student Ma 2" source="x_snc_student_ma_2">9803002747c1be103674de79116d436d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Student Ma 2">9803002747c1be103674de79116d436d</sys_scope>
+        <sys_update_name>sys_alias_templates_eb2889eb4749fe103674de79116d43be</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-12 12:18:01</sys_updated_on>
+        <test_action/>
+    </sys_alias_templates>
+</record_update>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="it4it_streams" label="IT4IT Streams (JSON)" language="en" table="x_snc_virgil_ontology_node">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>it4it_streams</element>
+            <help/>
+            <hint/>
+            <label>IT4IT Streams (JSON)</label>
+            <language>en</language>
+            <name>x_snc_virgil_ontology_node</name>
+            <plural>IT4IT Streams (JSON)</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-03 12:22:09</sys_created_on>
+            <sys_id>1691b8973b133a505c1f2d11a3e45a3c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>IT4IT Streams (JSON)</sys_name>
+            <sys_package display_value="Virgil" source="x_snc_virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_scope>
+            <sys_update_name>sys_documentation_x_snc_virgil_ontology_node_it4it_streams_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-03 12:22:09</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="fd41b053c357ba5088343e9a050131ab" label="Minos Finding" max_length="40" name="x_snc_virgil_minos_finding" type="collection">
+        <element label="Rule Name" max_length="200" name="rule_name" type="string"/>
+        <element label="Severity" max_length="20" name="severity" type="string"/>
+        <element label="Tags (JSON)" max_length="1000" name="tags" type="string"/>
+        <element label="Rule ID" max_length="40" name="rule_id" type="string"/>
+        <element label="Recommendation" max_length="4000" name="recommendation" type="string"/>
+        <element label="Source" max_length="40" name="source" type="string"/>
+        <element label="Evidence (JSON)" max_length="4000" name="evidence_json" type="string"/>
+        <element label="Message" max_length="4000" name="message" type="string"/>
+        <element label="Rule" max_length="32" name="rule" reference="x_snc_virgil_minos_rule" type="reference"/>
+        <element label="Scan" mandatory="true" max_length="32" name="scan" reference="x_snc_virgil_minos_scan" type="reference"/>
+        <element label="Category" max_length="40" name="category" type="string"/>
+        <index name="index">
+            <element name="rule"/>
+        </index>
+        <index name="index2">
+            <element name="scan"/>
+        </index>
+    </element>
+</database>

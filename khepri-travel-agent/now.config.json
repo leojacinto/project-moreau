@@ -1,0 +1,6 @@
+{
+  "scope": "x_snc_travel_a7t2p",
+  "scopeId": "adb4f67f3bd8cb50ea6467dc73e45ad7",
+  "name": "Travel Approval Agent",
+  "tsconfigPath": "./src/server/tsconfig.json"
+}

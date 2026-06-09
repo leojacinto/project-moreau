@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="rel_type" table="x_snc_virgil_ontology_edge" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>rel_type</element>
+            <name>x_snc_virgil_ontology_edge</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-03 12:21:46</sys_created_on>
+            <sys_id>bc817c93c357ba5088343e9a050131aa</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>rel_type</sys_name>
+            <sys_package display_value="Virgil" source="x_snc_virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_scope>
+            <sys_update_name>sys_choice_x_snc_virgil_ontology_edge_rel_type</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-03 12:21:46</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>rel_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Extends</label>
+            <language>en</language>
+            <name>x_snc_virgil_ontology_edge</name>
+            <sequence>0</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-03 12:21:46</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>34817c93c357ba5088343e9a050131aa</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-03 12:21:46</sys_updated_on>
+            <value>extends</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>rel_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Depends On</label>
+            <language>en</language>
+            <name>x_snc_virgil_ontology_edge</name>
+            <sequence>10</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-03 12:21:46</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>b8817c93c357ba5088343e9a050131d1</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-03 12:21:46</sys_updated_on>
+            <value>depends_on</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>rel_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Runs On</label>
+            <language>en</language>
+            <name>x_snc_virgil_ontology_edge</name>
+            <sequence>20</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-03 12:21:47</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>f0817c93c357ba5088343e9a050131f8</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-03 12:21:47</sys_updated_on>
+            <value>runs_on</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>rel_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>References</label>
+            <language>en</language>
+            <name>x_snc_virgil_ontology_edge</name>
+            <sequence>30</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-03 12:21:47</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>f08170173b133a505c1f2d11a3e45a88</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-03 12:21:47</sys_updated_on>
+            <value>references</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>rel_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Resolves Using</label>
+            <language>en</language>
+            <name>x_snc_virgil_ontology_edge</name>
+            <sequence>40</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-03 12:21:48</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>cd8130973b133a505c1f2d11a3e45a59</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-03 12:21:48</sys_updated_on>
+            <value>resolves_using</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>rel_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Consumes</label>
+            <language>en</language>
+            <name>x_snc_virgil_ontology_edge</name>
+            <sequence>50</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-03 12:21:48</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>1181bc93c357ba5088343e9a050131b4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-03 12:21:48</sys_updated_on>
+            <value>consumes</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>rel_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Creates</label>
+            <language>en</language>
+            <name>x_snc_virgil_ontology_edge</name>
+            <sequence>60</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-03 12:21:49</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>9181bc93c357ba5088343e9a050131ce</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-03 12:21:49</sys_updated_on>
+            <value>creates</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>rel_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Authenticates Via</label>
+            <language>en</language>
+            <name>x_snc_virgil_ontology_edge</name>
+            <sequence>70</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-03 12:21:49</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>2181bc93c357ba5088343e9a050131e4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-03 12:21:49</sys_updated_on>
+            <value>authenticates_via</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>rel_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Segregated From</label>
+            <language>en</language>
+            <name>x_snc_virgil_ontology_edge</name>
+            <sequence>80</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-03-03 12:21:50</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>a18130973b133a505c1f2d11a3e45acb</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-03-03 12:21:50</sys_updated_on>
+            <value>segregated_from</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

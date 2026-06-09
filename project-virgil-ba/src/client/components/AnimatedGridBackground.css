@@ -1,0 +1,14 @@
+.animated-grid-bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: #1a2e2e;
+  z-index: 0;
+}
+
+.animated-grid-canvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:ac9abf5c-51ae-400d-bea1-fe7a9de95f78",
+  "metadata": {
+    "timestamp": "2026-03-17T21:49:43.650Z",
+    "tools": {
+      "components": [
+        {
+          "type": "library",
+          "name": "sdk-build-plugins",
+          "group": "@servicenow",
+          "version": "4.4.0",
+          "author": "ServiceNow"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "travel-request-app",
+      "version": "0.0.1",
+      "bom-ref": "pkg:servicenow/travel-request-app@0.0.1?sys_scope_id=7d8dddbf2f6f36d0920fa33fafa4e347",
+      "description": "Travel Request app built with ServiceNow SDK + Claude Opus",
+      "licenses": [
+        {
+          "license": {
+            "name": "UNLICENSED"
+          }
+        }
+      ],
+      "purl": "pkg:servicenow/travel-request-app@0.0.1?sys_scope_id=7d8dddbf2f6f36d0920fa33fafa4e347"
+    }
+  },
+  "components": [],
+  "dependencies": [
+    {
+      "ref": "pkg:servicenow/travel-request-app@0.0.1?sys_scope_id=7d8dddbf2f6f36d0920fa33fafa4e347"
+    }
+  ]
+}

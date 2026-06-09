@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="0e8170973b133a505c1f2d11a3e45a2b" label="Ontology Node" max_length="40" name="x_snc_virgil_ontology_node" type="collection">
+        <element label="Name" mandatory="true" max_length="200" name="name" type="string"/>
+        <element label="IT4IT Streams (JSON)" max_length="200" name="it4it_streams" type="string"/>
+        <element default="true" label="Active" max_length="255" name="active" type="boolean"/>
+        <element label="Plugins (JSON)" max_length="2000" name="plugins" type="string"/>
+        <element label="Node ID" mandatory="true" max_length="40" name="node_id" type="string" unique="true"/>
+        <element label="Layer" max_length="40" name="layer" type="string"/>
+        <element label="Node Type" max_length="40" name="node_type" type="string"/>
+        <element label="Aliases (JSON)" max_length="2000" name="aliases" type="string"/>
+        <element label="Tables (JSON)" max_length="2000" name="tables" type="string"/>
+        <element default="100" label="Order" max_length="255" name="order" type="integer"/>
+    </element>
+</database>

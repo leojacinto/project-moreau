@@ -1,0 +1,75 @@
+<div class="ai-sessions-container">
+  <div class="filter-panel">
+    <h4>Filter Sessions</h4>
+    <div class="row">
+      <div class="col-md-3">
+        <label>Session Type:</label>
+        <select ng-model="c.filters.sessionType" ng-change="c.applyFilters()" class="form-control">
+          <option value="">All Types</option>
+          <option value="keynote">Keynote</option>
+          <option value="technical">Technical Session</option>
+          <option value="workshop">Workshop</option>
+          <option value="demo">Demo</option>
+          <option value="panel">Panel Discussion</option>
+          <option value="networking">Networking</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label>Target Roles:</label>
+        <select ng-model="c.filters.targetRole" ng-change="c.applyFilters()" class="form-control">
+          <option value="">All Roles</option>
+          <option value="developer">Developer</option>
+          <option value="admin">Admin</option>
+          <option value="architect">Architect</option>
+          <option value="consultant">Consultant</option>
+          <option value="manager">Manager</option>
+          <option value="sales">Sales</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label>Geo/Major Area:</label>
+        <select ng-model="c.filters.geoArea" ng-change="c.applyFilters()" class="form-control">
+          <option value="">All Areas</option>
+          <option value="apac">APAC</option>
+          <option value="americas">Americas</option>
+          <option value="emea">EMEA</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label>Search:</label>
+        <input type="text" ng-model="c.filters.search" ng-change="c.applyFilters()" placeholder="Search sessions..." class="form-control">
+      </div>
+    </div>
+  </div>
+
+  <div class="sessions-list">
+    <div ng-if="c.filteredSessions.length === 0" class="no-sessions">
+      <p>No sessions found matching your criteria.</p>
+    </div>
+    
+    <div ng-repeat="session in c.filteredSessions track by session.sys_id" class="session-card">
+      <div class="session-title">{{session.title}}</div>
+      <div class="session-details">
+        <strong>Time:</strong> {{session.start_time}} - {{session.end_time}}
+      </div>
+      <div class="session-details" ng-if="session.session_type">
+        <strong>Type:</strong> {{session.session_type.display_value || session.session_type}}
+      </div>
+      <div class="session-details" ng-if="session.presenter">
+        <strong>Presenter:</strong> {{session.presenter}}
+      </div>
+      <div class="session-details" ng-if="session.target_roles">
+        <strong>Target Roles:</strong> {{session.target_roles.display_value || session.target_roles}}
+      </div>
+      <div class="session-details" ng-if="session.geo_major_area">
+        <strong>Geo/Area:</strong> {{session.geo_major_area.display_value || session.geo_major_area}}
+      </div>
+      <div class="session-details" ng-if="session.room_location">
+        <strong>Location:</strong> {{session.room_location}}
+      </div>
+      <div class="session-description" ng-if="session.description">
+        {{session.description}}
+      </div>
+    </div>
+  </div>
+</div>

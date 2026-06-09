@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="m2m_app_config_theme">
+    <m2m_app_config_theme action="DELETE">
+        <applicability/>
+        <order>0</order>
+        <sys_class_name>m2m_app_config_theme</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-03 12:12:16</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>8d5fe01bbadff650b4d4d218ec093ffe</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package display_value="Virgil" source="x_snc_virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_scope>
+        <sys_update_name>m2m_app_config_theme_8d5fe01bbadff650b4d4d218ec093ffe</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-03 12:12:16</sys_updated_on>
+        <theme display_value="Base Agent Workspace theme">c012213bc39b10101d590cf06e40dd32</theme>
+        <u_original_theme/>
+        <ux_app_configuration display_value="">815f241b71dff6503ffd9be603b27d00</ux_app_configuration>
+    </m2m_app_config_theme>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Virgil">232fa0973bdff6505c1f2d11a3e45a49</application>
+        <file_path/>
+        <instance_id>5e7c18142baa6a50e2e6fcd2ce91bfd9</instance_id>
+        <instance_name>demoalectriallwf118028</instance_name>
+        <name>m2m_app_config_theme_8d5fe01bbadff650b4d4d218ec093ffe</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="m2m_app_config_theme"><m2m_app_config_theme action="INSERT_OR_UPDATE"><applicability/><order>0</order><sys_class_name>m2m_app_config_theme</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-03-03 12:12:16</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>8d5fe01bbadff650b4d4d218ec093ffe</sys_id><sys_mod_count>0</sys_mod_count><sys_name/><sys_overrides/><sys_package display_value="Virgil" source="x_snc_virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_package><sys_policy/><sys_scope display_value="Virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_scope><sys_update_name>m2m_app_config_theme_8d5fe01bbadff650b4d4d218ec093ffe</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-03-03 12:12:16</sys_updated_on><theme display_value="Base Agent Workspace theme">c012213bc39b10101d590cf06e40dd32</theme><u_original_theme/><ux_app_configuration display_value="">815f241b71dff6503ffd9be603b27d00</ux_app_configuration></m2m_app_config_theme></record_update>]]></payload>
+        <payload_hash>-1587410725</payload_hash>
+        <record_name/>
+        <reverted_from/>
+        <source>25d7d960c332321088343e9a0501310e</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by/>
+        <sys_created_on>2026-01-29 05:34:32</sys_created_on>
+        <sys_id>cfd34d573b1b3a505c1f2d11a3e45a36</sys_id>
+        <sys_mod_count/>
+        <sys_recorded_at>19c083efe400000000</sys_recorded_at>
+        <sys_updated_by/>
+        <sys_updated_on/>
+        <type>UX App Theme</type>
+        <update_guid>8fd34d57491b3a50c65b5c0248e6a136</update_guid>
+        <update_guid_history>8fd34d57491b3a50c65b5c0248e6a136:-1587410725</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">4bd34d573b1b3a505c1f2d11a3e45a38</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-03 13:41:57</sys_created_on>
+        <sys_db_object display_value="" name="m2m_app_config_theme">m2m_app_config_theme</sys_db_object>
+        <sys_id>0cbcaf38988a44729105556cb9889a84</sys_id>
+        <sys_metadata>8d5fe01bbadff650b4d4d218ec093ffe</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Virgil" source="x_snc_virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_scope>
+        <sys_scope_delete display_value="">036c974ddbaa4ec680caa7e427fad4c1</sys_scope_delete>
+        <sys_update_name>m2m_app_config_theme_8d5fe01bbadff650b4d4d218ec093ffe</sys_update_name>
+        <sys_update_version display_value="m2m_app_config_theme_8d5fe01bbadff650b4d4d218ec093ffe">cfd34d573b1b3a505c1f2d11a3e45a36</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-03 13:41:57</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

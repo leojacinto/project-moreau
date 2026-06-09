@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_module">
+    <sys_module action="INSERT_OR_UPDATE">
+        <content><![CDATA[var StudentOracleSync = Class.create();
+StudentOracleSync.prototype = Object.extendsObject(AbstractAjaxProcessor, {
+    
+    getAllStudents: function() {
+        // ABSOLUTE MINIMAL TEST - just return immediately
+        this.setAnswer('{"success":true,"message":"Script include is executing","timestamp":"' + new GlideDateTime().getDisplayValue() + '"}');
+    },
+    
+    syncStudentData: function() {
+        this.setAnswer('{"success":false,"message":"Sync method responding"}');
+    },
+    
+    testSpokeConnection: function() {
+        this.setAnswer('{"success":true,"message":"testSpokeConnection method responding","timestamp":"' + new GlideDateTime().getDisplayValue() + '"}');
+    },
+
+    type: 'StudentOracleSync'
+});]]></content>
+        <external_source>false</external_source>
+        <path>x_snc_student_ma_2/x-snc-student-ma-2/1.0.0/src/server/script-includes/student-oracle-sync.js</path>
+        <sys_class_name>sys_module</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2025-11-12 09:27:35</sys_created_on>
+        <sys_id>e4e9ba1f31f142d4996c50f42b6990a9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_student_ma_2/x-snc-student-ma-2/1.0.0/src/server/script-includes/student-oracle-sync.js</sys_name>
+        <sys_package display_value="Student Ma 2" source="x_snc_student_ma_2">9803002747c1be103674de79116d436d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Student Ma 2">9803002747c1be103674de79116d436d</sys_scope>
+        <sys_update_name>sys_module_e4e9ba1f31f142d4996c50f42b6990a9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2025-11-12 09:27:35</sys_updated_on>
+    </sys_module>
+</record_update>

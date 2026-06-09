@@ -1,0 +1,42 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:5f9be03f-7af3-477d-ac43-fa273ce2f649",
+  "metadata": {
+    "timestamp": "2026-04-03T08:46:42.564Z",
+    "tools": {
+      "components": [
+        {
+          "type": "library",
+          "name": "sdk-build-plugins",
+          "group": "@servicenow",
+          "version": "4.4.0",
+          "author": "ServiceNow"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "travel-request-management",
+      "version": "1.0.0",
+      "bom-ref": "pkg:servicenow/travel-request-management@1.0.0?sys_scope_id=c65f02812fc8835c920fa33fafa4e342",
+      "description": "April 2026 Travel Request App - SDK Approach (Project Sybil)",
+      "licenses": [
+        {
+          "license": {
+            "name": "UNLICENSED"
+          }
+        }
+      ],
+      "purl": "pkg:servicenow/travel-request-management@1.0.0?sys_scope_id=c65f02812fc8835c920fa33fafa4e342"
+    }
+  },
+  "components": [],
+  "dependencies": [
+    {
+      "ref": "pkg:servicenow/travel-request-management@1.0.0?sys_scope_id=c65f02812fc8835c920fa33fafa4e342"
+    }
+  ]
+}

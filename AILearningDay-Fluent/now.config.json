@@ -1,0 +1,6 @@
+{
+  "scope": "x_snc_ai_learnin_4",
+  "scopeId": "e8e23e7093f37a908381f8bcdd03d6a3",
+  "name": "AI Learning Day Agenda Builder",
+  "tsconfigPath": "./src/server/tsconfig.json"
+}

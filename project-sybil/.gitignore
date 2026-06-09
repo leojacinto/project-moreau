@@ -1,0 +1,19 @@
+node_modules/
+.env
+dist/
+build/
+*.log
+.DS_Store
+_archived-jarvis/
+Market_research_app/
+socials/
+!socials/sibyl_comparison_april.gif
+sdk/
+
+# JARVIS internal documentation (not for public repo)
+README-JARVIS.md
+jarvis-session-log.md
+jarvis-transcript.md
+**/JARVIS*/
+**/jarvis*/
+*.jarvis.*

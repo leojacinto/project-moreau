@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Requests — SDK Pure Approach (Standalone Preview)</title>
+<style>
+  :root { --bg: #0f172a; --card: #1e293b; --border: #334155; --primary: #3b82f6; --success: #22c55e; --danger: #ef4444; --warn: #f59e0b; --purple: #a855f7; --text: #e2e8f0; --muted: #94a3b8; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+  .header { background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+  .header-left { display: flex; align-items: center; gap: 0.5rem; }
+  .header h1 { font-size: 1.5rem; }
+  .badge { background: var(--primary); color: white; font-size: 0.65rem; font-weight: 700; padding: 2px 8px; border-radius: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
+
+  .stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+  .stat { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem; text-align: center; }
+  .stat .num { font-size: 2rem; font-weight: 700; }
+  .stat .lbl { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+  .stat.draft .num { color: var(--muted); } .stat.submitted .num { color: var(--primary); }
+  .stat.approved .num { color: var(--success); } .stat.rejected .num { color: var(--danger); }
+  .stat.total .num { color: var(--text); }
+
+  .toolbar { display: flex; gap: 1rem; margin-bottom: 1rem; align-items: center; flex-wrap: wrap; }
+  .toolbar input, .toolbar select { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.9rem; }
+  .toolbar input { flex: 1; min-width: 200px; }
+
+  .btn { padding: 0.5rem 1.2rem; border-radius: 8px; border: none; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.2s; }
+  .btn-primary { background: var(--primary); color: white; } .btn-primary:hover { background: #2563eb; }
+  .btn-success { background: var(--success); color: white; } .btn-danger { background: var(--danger); color: white; }
+  .btn-secondary { background: var(--border); color: var(--text); } .btn-sm { padding: 0.3rem 0.8rem; font-size: 0.8rem; }
+
+  table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+  th, td { padding: 0.8rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+  th { background: #0f172a; color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  tr:hover { background: rgba(59, 130, 246, 0.05); }
+
+  .badge-state { padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; color: white; display: inline-block; }
+  .badge-draft { background: #475569; } .badge-submitted { background: var(--primary); }
+  .badge-approved { background: var(--success); } .badge-rejected { background: var(--danger); }
+  .badge-completed { background: var(--purple); }
+
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 100; }
+  .modal { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; width: 90%; max-width: 600px; }
+  .modal h2 { margin-bottom: 1.5rem; } .modal label { display: block; margin-bottom: 0.3rem; color: var(--muted); font-size: 0.85rem; }
+  .modal input, .modal textarea, .modal select { width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--text); padding: 0.6rem; border-radius: 8px; margin-bottom: 1rem; font-size: 0.9rem; font-family: inherit; }
+  .modal textarea { min-height: 80px; resize: vertical; }
+  .modal .actions { display: flex; gap: 0.8rem; justify-content: flex-end; margin-top: 1rem; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .loading { text-align: center; padding: 3rem; color: var(--muted); }
+  .empty { text-align: center; padding: 3rem; color: var(--muted); }
+  .actions-cell { display: flex; gap: 0.4rem; }
+  .alert { padding: 0.6rem 1rem; margin-bottom: 1rem; border-radius: 8px; font-size: 0.9rem; }
+  .alert-info { background: rgba(59,130,246,0.15); border: 1px solid var(--primary); color: #93c5fd; }
+  .conn-bar { background: var(--card); border-bottom: 1px solid var(--border); padding: 0.6rem 2rem; display: flex; gap: 1rem; align-items: center; font-size: 0.85rem; }
+  .conn-bar input { background: var(--bg); border: 1px solid var(--border); color: var(--text); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.85rem; }
+  .conn-bar .status { margin-left: auto; }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; }
+  .dot-green { background: var(--success); } .dot-red { background: var(--danger); } .dot-yellow { background: var(--warn); }
+  @media (max-width: 768px) { .stats { grid-template-columns: repeat(2, 1fr); } .row { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-left">
+    <span style="font-size:1.5rem">✈️</span>
+    <h1>Travel Requests</h1>
+    <span class="badge">SDK Pure</span>
+  </div>
+  <button class="btn btn-primary" onclick="openForm()">+ New Request</button>
+</div>
+<div class="conn-bar">
+  <label>Instance:</label>
+  <input id="inst" value="" placeholder="https://instance.service-now.com" size="40">
+  <label>User:</label><input id="user" value="" size="12">
+  <label>Pass:</label><input id="pass" type="password" value="" size="12">
+  <button class="btn btn-sm btn-primary" onclick="connect()">Connect</button>
+  <span class="status" id="connStatus"><span class="dot dot-yellow"></span> Not connected</span>
+</div>
+<div class="container">
+  <div class="alert alert-info">
+    <strong>SDK Pure Standalone Preview</strong> — This mirrors the Now Experience component (<code>x-snc-travel-request-app</code>). In production, this deploys via <code>snc ui-component deploy</code> to the instance.
+  </div>
+  <div class="stats" id="stats"></div>
+  <div class="toolbar">
+    <input type="text" id="search" placeholder="Search by destination or purpose..." oninput="renderTable()">
+    <select id="filter" onchange="renderTable()">
+      <option value="">All States</option>
+      <option value="draft">Draft</option>
+      <option value="submitted">Submitted</option>
+      <option value="approved">Approved</option>
+      <option value="rejected">Rejected</option>
+      <option value="completed">Completed</option>
+    </select>
+    <button class="btn btn-secondary" onclick="loadData()">↻ Refresh</button>
+  </div>
+  <table><thead><tr><th>Number</th><th>Destination</th><th>Dates</th><th>Cost</th><th>State</th><th>Actions</th></tr></thead><tbody id="tbody"><tr><td colspan="6" class="empty">Connect to your instance above to load data</td></tr></tbody></table>
+</div>
+<div id="modal"></div>
+<script>
+let data = [];
+const T = 'x_snc_travel_req_request';
+let baseUrl = '', authHeader = '';
+
+function connect() {
+  baseUrl = document.getElementById('inst').value.replace(/\/+$/, '');
+  const u = document.getElementById('user').value;
+  const p = document.getElementById('pass').value;
+  authHeader = 'Basic ' + btoa(u + ':' + p);
+  document.getElementById('connStatus').innerHTML = '<span class="dot dot-yellow"></span> Connecting...';
+  loadData();
+}
+
+async function api(method, path, body) {
+  const opts = { method, headers: { 'Authorization': authHeader, 'Accept': 'application/json', 'Content-Type': 'application/json' } };
+  if (body) opts.body = JSON.stringify(body);
+  const r = await fetch(baseUrl + path, opts);
+  if (!r.ok) { const e = await r.text(); throw new Error(r.status + ': ' + e.slice(0, 200)); }
+  return r.json();
+}
+
+async function loadData() {
+  if (!baseUrl) return;
+  try {
+    const r = await api('GET', '/api/now/table/' + T + '?sysparm_display_value=true&sysparm_limit=100&sysparm_orderby=sys_created_onDESC');
+    data = r.result || [];
+    document.getElementById('connStatus').innerHTML = '<span class="dot dot-green"></span> Connected (' + data.length + ' records)';
+  } catch(e) {
+    data = [];
+    document.getElementById('connStatus').innerHTML = '<span class="dot dot-red"></span> Error: ' + e.message.slice(0, 60);
+    console.error(e);
+  }
+  renderStats(); renderTable();
+}
+
+function renderStats() {
+  const s = { total: data.length, draft: 0, submitted: 0, approved: 0, rejected: 0 };
+  data.forEach(r => { if (s[r.state] !== undefined) s[r.state]++; });
+  document.getElementById('stats').innerHTML = ['total','draft','submitted','approved','rejected'].map(k =>
+    '<div class="stat ' + k + '"><div class="num">' + s[k] + '</div><div class="lbl">' + k.charAt(0).toUpperCase() + k.slice(1) + '</div></div>'
+  ).join('');
+}
+
+function renderTable() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const f = document.getElementById('filter').value;
+  let rows = data;
+  if (f) rows = rows.filter(r => r.state === f);
+  if (q) rows = rows.filter(r => (r.destination||'').toLowerCase().includes(q) || (r.purpose||'').toLowerCase().includes(q));
+  if (!rows.length) { document.getElementById('tbody').innerHTML = '<tr><td colspan="6" class="empty">No travel requests found</td></tr>'; return; }
+  document.getElementById('tbody').innerHTML = rows.map(r => '<tr>' +
+    '<td>' + (r.number || '—') + '</td>' +
+    '<td><strong>' + (r.destination || '—') + '</strong><br><small style="color:var(--muted)">' + (r.purpose||'').slice(0,60) + '</small></td>' +
+    '<td>' + (r.departure_date || '?') + ' → ' + (r.return_date || '?') + '</td>' +
+    '<td>$' + Number(r.estimated_cost || 0).toLocaleString() + '</td>' +
+    '<td><span class="badge-state badge-' + r.state + '">' + r.state + '</span></td>' +
+    '<td class="actions-cell">' + actionBtns(r) + '</td></tr>'
+  ).join('');
+}
+
+function actionBtns(r) {
+  let b = '';
+  if (r.state === 'draft') b += '<button class="btn btn-primary btn-sm" onclick="submitReq(\'' + r.sys_id + '\')">Submit</button>';
+  if (r.state === 'submitted') {
+    b += '<button class="btn btn-success btn-sm" onclick="approveReq(\'' + r.sys_id + '\')">Approve</button>';
+    b += '<button class="btn btn-danger btn-sm" onclick="rejectReq(\'' + r.sys_id + '\')">Reject</button>';
+  }
+  if (r.state === 'draft') b += '<button class="btn btn-danger btn-sm" onclick="deleteReq(\'' + r.sys_id + '\')">🗑</button>';
+  return b;
+}
+
+async function submitReq(id) { try { await api('PATCH', '/api/now/table/' + T + '/' + id, { state: 'submitted' }); loadData(); } catch(e) { alert('Submit failed: ' + e.message); } }
+async function approveReq(id) { try { await api('PATCH', '/api/now/table/' + T + '/' + id, { state: 'approved' }); loadData(); } catch(e) { alert('Approve failed: ' + e.message); } }
+async function rejectReq(id) {
+  const reason = prompt('Rejection reason:');
+  if (!reason) return;
+  try { await api('PATCH', '/api/now/table/' + T + '/' + id, { state: 'rejected', rejection_reason: reason }); loadData(); } catch(e) { alert('Reject failed: ' + e.message); }
+}
+async function deleteReq(id) { if (!confirm('Delete?')) return; try { await api('DELETE', '/api/now/table/' + T + '/' + id); loadData(); } catch(e) { alert('Delete failed: ' + e.message); } }
+
+function openForm() {
+  document.getElementById('modal').innerHTML = '<div class="modal-overlay" onclick="if(event.target===this)closeForm()"><div class="modal">' +
+    '<h2>✈️ New Travel Request</h2>' +
+    '<label>Destination</label><input id="f_dest" placeholder="e.g. Tokyo, Japan">' +
+    '<div class="row"><div><label>Departure</label><input id="f_dep" type="date"></div><div><label>Return</label><input id="f_ret" type="date"></div></div>' +
+    '<label>Purpose</label><textarea id="f_purp" placeholder="Business justification..."></textarea>' +
+    '<div class="row"><div><label>Estimated Cost (USD)</label><input id="f_cost" type="number" step="0.01" placeholder="0.00"></div><div><label>Notes</label><input id="f_notes" placeholder="Optional"></div></div>' +
+    '<div class="actions"><button class="btn btn-secondary" onclick="closeForm()">Cancel</button><button class="btn btn-primary" onclick="saveForm()">Create</button></div>' +
+    '</div></div>';
+}
+function closeForm() { document.getElementById('modal').innerHTML = ''; }
+
+async function saveForm() {
+  const body = { destination: document.getElementById('f_dest').value, departure_date: document.getElementById('f_dep').value, return_date: document.getElementById('f_ret').value, purpose: document.getElementById('f_purp').value, estimated_cost: document.getElementById('f_cost').value, notes: document.getElementById('f_notes').value, state: 'draft' };
+  if (!body.destination || !body.departure_date || !body.return_date || !body.purpose || !body.estimated_cost) { alert('All fields except notes are required'); return; }
+  if (body.return_date < body.departure_date) { alert('Return date must be after departure'); return; }
+  try { await api('POST', '/api/now/table/' + T, body); closeForm(); loadData(); } catch(e) { alert('Create failed: ' + e.message); }
+}
+</script>
+</body>
+</html>

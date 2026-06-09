@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl/>
+        <http_method>POST</http_method>
+        <name>Plutus Scan</name>
+        <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+    var body = request.body ? request.body.data : {};
+    var userOverrides = body.user_overrides || {};
+
+    var scanner = new PlutusScanner();
+    var result = scanner.scan({
+        user_overrides: userOverrides
+    });
+
+    response.setStatus(200);
+    response.setBody(result);
+})(request, response);
+]]></operation_script>
+        <operation_uri>/api/x_snc_virgil/virgil_api/plutus/scan</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/plutus/scan</relative_path>
+        <request_example/>
+        <requires_acl_authorization>false</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>true</requires_snc_internal_role>
+        <short_description>Run a WDF credit sizing scan against this instance</short_description>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-03-03 12:25:40</sys_created_on>
+        <sys_id>ed6278db3b133a505c1f2d11a3e45aab</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Plutus Scan</sys_name>
+        <sys_package display_value="Virgil" source="x_snc_virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Virgil">232fa0973bdff6505c1f2d11a3e45a49</sys_scope>
+        <sys_update_name>sys_ws_operation_ed6278db3b133a505c1f2d11a3e45aab</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-03-03 12:25:40</sys_updated_on>
+        <web_service_definition display_value="Virgil API">4732349b3b133a505c1f2d11a3e45a18</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>
